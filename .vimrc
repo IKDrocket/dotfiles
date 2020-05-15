@@ -208,10 +208,11 @@ let g:syntastic_check_on_wq = 1
 " Javascript用. 構文エラーチェックにESLintを使用
 let g:syntastic_javascript_checkers=['eslint']
 " Javascript以外は構文エラーチェックをしない
-let g:syntastic_mode_map = { 'mode': 'passive',
-                           \ 'active_filetypes': ['javascript'],
-                           \ 'passive_filetypes': [] }
-
+" let g:syntastic_mode_map = { 'mode': 'passive',
+"                           \ 'active_filetypes': ['javascript'],
+"                           \ 'passive_filetypes': [] }
+" Python用、構文エラーチェック
+let g:syntastic_python_checkers = ['pyflakes', 'pep8']
 "----------------------------------------------------------
 " CtrlP
 "----------------------------------------------------------
