@@ -1,0 +1,50 @@
+# Ghostty Configuration
+# Reference: https://ghostty.org/docs/config/reference
+
+# ──────────────────────────────────────────
+# 外観
+# ──────────────────────────────────────────
+theme = "Tomorrow Night"
+background-opacity = 0.7
+# background-blur-radius = 3
+window-padding-x = 5
+
+# ──────────────────────────────────────────
+# フォント
+# ──────────────────────────────────────────
+# font-family = "JetBrains Mono"
+# font-size = 14
+
+# ──────────────────────────────────────────
+# カーソル
+# ──────────────────────────────────────────
+cursor-style = block
+# cursor-style-blink = false
+# cursor-opacity = 0.7
+
+# ──────────────────────────────────────────
+# キーバインド
+# ──────────────────────────────────────────
+
+# グローバル
+keybind = global:shift+space=toggle_visibility
+
+# ペイン分割
+keybind = ctrl+shift+v=new_split:right
+keybind = ctrl+shift+h=new_split:down
+
+# ペイン移動
+keybind = ctrl+h=goto_split:left
+keybind = ctrl+j=goto_split:down
+keybind = ctrl+k=goto_split:up
+keybind = ctrl+l=goto_split:right
+
+# ペインリサイズ
+keybind = ctrl+comma=resize_split:left,10
+keybind = ctrl+period=resize_split:right,10
+keybind = ctrl+semicolon=resize_split:down,10
+keybind = ctrl+apostrophe=resize_split:up,10
+
+# スクロール
+keybind = ctrl+shift+k=scroll_page_lines:-3
+keybind = ctrl+shift+j=scroll_page_lines:3

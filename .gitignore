@@ -1,3 +1,6 @@
-.bash_profile
-.bashrc
-.vim
+.DS_Store
+*.log
+*credentials*
+*secret*
+*.pem
+*.key

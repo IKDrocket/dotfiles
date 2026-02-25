@@ -1,0 +1,8 @@
+[tools]
+aws-cli = "2.22.12"
+go = "1"
+node = "24"
+python = "3.13"
+
+[settings]
+idiomatic_version_file_enable_tools = []
