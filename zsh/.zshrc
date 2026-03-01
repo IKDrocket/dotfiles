@@ -51,3 +51,13 @@ export PATH="/Users/ikdrocket/.antigravity/antigravity/bin:$PATH"
 
 eval "$(mise activate zsh)"
 eval "$(starship init zsh)"
+
+# ──────────────────────────────────────────
+# エイリアス
+# ──────────────────────────────────────────
+alias vi="nvim"
+alias vim="nvim"
+alias view="nvim -R"
+alias zshconfig="vim ~/.zshrc"
+alias dotfile="vim ~/dotfiles"
+alias zshreload="source ~/.zshrc"
