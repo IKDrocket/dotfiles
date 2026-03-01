@@ -42,7 +42,7 @@ brew "aquasecurity/trivy/trivy"  # コンテナ脆弱性スキャン
 # ──────────────────────────────────────────
 cask "ghostty"
 cask "visual-studio-code"
-cask "docker"
+cask "docker-desktop"
 cask "google-chrome"
 cask "slack"
 cask "discord"
