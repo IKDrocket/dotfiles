@@ -88,6 +88,16 @@ VSCODE_USER_DIR="$HOME/Library/Application Support/Code/User"
 link "$DOTFILES_DIR/vscode/settings.json"    "$VSCODE_USER_DIR/settings.json"
 link "$DOTFILES_DIR/vscode/keybindings.json" "$VSCODE_USER_DIR/keybindings.json"
 
+# Claude Code 設定
+CLAUDE_DIR="$HOME/.claude"
+link "$DOTFILES_DIR/claude/settings.json"  "$CLAUDE_DIR/settings.json"
+link "$DOTFILES_DIR/claude/statusline.sh"  "$CLAUDE_DIR/statusline.sh"
+chmod +x "$DOTFILES_DIR/claude/statusline.sh"
+link "$DOTFILES_DIR/claude/CLAUDE.md"      "$CLAUDE_DIR/CLAUDE.md"
+link "$DOTFILES_DIR/claude/commands"       "$CLAUDE_DIR/commands"
+link "$DOTFILES_DIR/claude/skills"         "$CLAUDE_DIR/skills"
+link "$DOTFILES_DIR/claude/agents"         "$CLAUDE_DIR/agents"
+
 # ──────────────────────────────────────────
 # 7. VS Code 拡張機能の一括インストール
 # ──────────────────────────────────────────
