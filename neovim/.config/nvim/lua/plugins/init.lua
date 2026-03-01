@@ -22,25 +22,23 @@ return {
 
   -- LSP
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     config = function()
       require("mason").setup()
     end,
   },
   {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
+    "mason-org/mason-lspconfig.nvim",
+    dependencies = { "mason-org/mason.nvim", "neovim/nvim-lspconfig" },
     config = function()
-      local lspconfig = require("lspconfig")
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      -- capabilities をグローバルに設定（全サーバーに適用）
+      vim.lsp.config('*', {
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+      })
+      -- インストール済みサーバーは automatic_enable（デフォルト true）で自動的に vim.lsp.enable() される
       require("mason-lspconfig").setup({
         ensure_installed = { "bashls" },
         automatic_installation = false,
-        handlers = {
-          function(server_name)
-            lspconfig[server_name].setup({ capabilities = capabilities })
-          end,
-        },
       })
     end,
   },
@@ -109,14 +107,6 @@ return {
     event = "InsertEnter",
     config = function()
       require("nvim-autopairs").setup()
-    end,
-  },
-
-  -- コメントトグル（gcc）
-  {
-    "numToStr/Comment.nvim",
-    config = function()
-      require("Comment").setup()
     end,
   },
 
