@@ -36,6 +36,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `ghostty/config` | `~/Library/Application Support/com.mitchellh.ghostty/config` |
 | `starship/starship.toml` | `~/.config/starship.toml` |
 | `vim/.vimrc` | `~/.vimrc` |
+| `zellij/config.kdl` | `~/.config/zellij/config.kdl` |
 | `neovim/.config/nvim` | `~/.config/nvim` |
 | `vscode/settings.json` | `~/Library/Application Support/Code/User/settings.json` |
 | `vscode/keybindings.json` | `~/Library/Application Support/Code/User/keybindings.json` |

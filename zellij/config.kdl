@@ -1,0 +1,28 @@
+// Zellij 設定ファイル
+// デフォルト値から変更したもののみ記載
+
+// デフォルトシェル（省略時はログインシェルを使用）
+// default_shell "zsh"
+
+// マウス操作を有効化
+mouse_mode true
+
+// コピー時にクリップボードへ自動コピー
+copy_on_select true
+
+// セッション終了時に自動デタッチしない（ウィンドウを閉じる）
+on_force_close "quit"
+
+// テーマ
+// theme "catppuccin-mocha"
+
+keybinds clear-defaults=false {
+    // Alt + h/j/k/l でペイン移動
+    normal {
+        bind "Alt h" { MoveFocus "Left"; }
+        bind "Alt l" { MoveFocus "Right"; }
+        bind "Alt j" { MoveFocus "Down"; }
+        bind "Alt k" { MoveFocus "Up"; }
+    }
+}
+'

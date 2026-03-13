@@ -29,6 +29,7 @@ link "$DOTFILES_DIR/mise/config.toml"       "$HOME/.config/mise/config.toml"
 link "$DOTFILES_DIR/ghostty/config"         "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
 link "$DOTFILES_DIR/starship/starship.toml" "$HOME/.config/starship.toml"
 link "$DOTFILES_DIR/neovim/.config/nvim"   "$HOME/.config/nvim"
+link "$DOTFILES_DIR/zellij/config.kdl"    "$HOME/.config/zellij/config.kdl"
 
 # VS Code 設定（macOS のパス）
 VSCODE_USER_DIR="$HOME/Library/Application Support/Code/User"

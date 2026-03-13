@@ -33,6 +33,7 @@ brew "gh"
 # 開発ツール
 # ──────────────────────────────────────────
 brew "neovim"
+brew "zellij"         # ターミナルマルチプレクサ
 brew "ripgrep"        # Telescope live_grep の必須依存
 brew "mise"           # ランタイムバージョン管理
 brew "shellcheck"     # bash-language-server が診断に使用
