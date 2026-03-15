@@ -12,11 +12,12 @@ cd ~/dotfiles
 
 `install.sh` を実行すると以下が自動で行われます:
 
-1. **Homebrew** のインストール（未インストール時）
-2. **Brewfile** に記載されたパッケージの一括インストール
-3. **mise** による開発ツールのインストール
-4. **シンボリックリンク** の作成
-5. **VS Code 拡張機能** の一括インストール
+1. **Xcode CLI ツール** と **Rosetta**（Apple Silicon）のインストール
+2. **Homebrew** のインストール（未インストール時）と Brewfile パッケージの一括インストール
+3. **mise** による開発ランタイムのインストール
+4. **シンボリックリンク** の作成（link.sh 実行）
+5. **Claude Code MCP サーバー** の登録（claude/setup-mcp.sh 実行）
+6. **VS Code 拡張機能** の一括インストール
 
 ## 管理ファイル一覧
 
@@ -28,6 +29,14 @@ cd ~/dotfiles
 | `mise/config.toml`        | `~/.config/mise/config.toml`                                 |
 | `ghostty/config`          | `~/Library/Application Support/com.mitchellh.ghostty/config` |
 | `starship/starship.toml`  | `~/.config/starship.toml`                                    |
+| `neovim/.config/nvim`     | `~/.config/nvim`                                             |
+| `zellij/config.kdl`       | `~/.config/zellij/config.kdl`                                |
+| `claude/settings.json`    | `~/.claude/settings.json`                                    |
+| `claude/statusline.sh`    | `~/.claude/statusline.sh`                                    |
+| `claude/CLAUDE.md`        | `~/.claude/CLAUDE.md`                                        |
+| `claude/commands/`        | `~/.claude/commands/`                                        |
+| `claude/skills/`          | `~/.claude/skills/`                                          |
+| `claude/agents/`          | `~/.claude/agents/`                                          |
 | `vscode/settings.json`    | `~/Library/Application Support/Code/User/settings.json`      |
 | `vscode/keybindings.json` | `~/Library/Application Support/Code/User/keybindings.json`   |
 
@@ -36,9 +45,11 @@ cd ~/dotfiles
 ```
 dotfiles/
 ├── install.sh               # セットアップスクリプト（メインエントリポイント）
+├── link.sh                  # シンボリックリンク作成スクリプト
 ├── Brewfile                 # Homebrew パッケージリスト
 ├── .gitignore
 ├── README.md
+├── CLAUDE.md
 ├── zsh/
 │   ├── .zshrc
 │   └── .zprofile
@@ -52,6 +63,20 @@ dotfiles/
 │   └── config
 ├── starship/
 │   └── starship.toml
+├── neovim/
+│   └── .config/nvim/        # lazy.nvim ベースの Neovim 設定
+├── zellij/
+│   └── config.kdl
+├── claude/
+│   ├── settings.json
+│   ├── statusline.sh
+│   ├── setup-mcp.sh        # MCP サーバー登録スクリプト
+│   ├── CLAUDE.md
+│   ├── commands/
+│   ├── skills/
+│   └── agents/
+├── via/
+│   └── EPOMAKER Split65/    # キーボードレイアウト設定
 └── vscode/
     ├── settings.json
     ├── keybindings.json
