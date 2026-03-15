@@ -60,7 +60,17 @@ fi
 bash "$DOTFILES_DIR/link.sh"
 
 # ──────────────────────────────────────────
-# 7. VS Code 拡張機能の一括インストール
+# 7. Claude Code MCP サーバーの登録
+# ──────────────────────────────────────────
+if command -v claude &>/dev/null; then
+  echo "==> Registering Claude Code MCP servers..."
+  bash "$DOTFILES_DIR/claude/setup-mcp.sh"
+else
+  echo "==> Claude Code not found. Skipping MCP server registration."
+fi
+
+# ──────────────────────────────────────────
+# 8. VS Code 拡張機能の一括インストール
 # ──────────────────────────────────────────
 if command -v code &>/dev/null; then
   echo "==> Installing VS Code extensions..."

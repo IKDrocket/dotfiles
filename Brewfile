@@ -36,6 +36,7 @@ brew "neovim"
 brew "zellij"         # ターミナルマルチプレクサ
 brew "ripgrep"        # Telescope live_grep の必須依存
 brew "mise"           # ランタイムバージョン管理
+brew "uv"             # Python パッケージマネージャ（uvx で MCP サーバー実行に必要）
 brew "shellcheck"     # bash-language-server が診断に使用
 brew "shfmt"          # Shell スクリプトフォーマッタ
 brew "openjdk"
