@@ -44,18 +44,12 @@ progress_bar() {
 MODEL=$(echo "$input" | jq -r '.model.display_name // "-"')
 CONTEXT_SIZE=$(echo "$input" | jq -r '.context_window.context_window_size // 0')
 CWD=$(echo "$input" | jq -r '.cwd // "."')
-
-# Context percent
-if [ "$CONTEXT_SIZE" != "0" ] && [ "$CONTEXT_SIZE" != "null" ]; then
-    CURRENT=$(echo "$input" | jq '.context_window.current_usage | .input_tokens + .cache_creation_input_tokens + .cache_read_input_tokens')
-    CTX_PCT=$((CURRENT * 100 / CONTEXT_SIZE))
-else
-    CTX_PCT=0
-fi
+CTX_PCT=$(echo "$input" | jq -r '.context_window.used_percentage // 0' | awk '{printf "%d", $1}')
+CURRENT=$(echo "$input" | jq -r 'if .context_window.current_usage then .context_window.current_usage | .input_tokens + .cache_creation_input_tokens + .cache_read_input_tokens else 0 end')
 
 # Git diff stats (session-only)
-ADDED=$(echo "$input" | jq -r '.git_stats.added_lines // 0' 2>/dev/null)
-REMOVED=$(echo "$input" | jq -r '.git_stats.removed_lines // 0' 2>/dev/null)
+ADDED=$(echo "$input" | jq -r '.cost.total_lines_added // 0' 2>/dev/null)
+REMOVED=$(echo "$input" | jq -r '.cost.total_lines_removed // 0' 2>/dev/null)
 [ -z "$ADDED" ] && ADDED=0
 [ -z "$REMOVED" ] && REMOVED=0
 
@@ -67,6 +61,8 @@ if [ -z "$BRANCH" ]; then
 fi
 
 TOTAL_COST=$(echo "$input" | jq -r '.cost.total_cost_usd // empty' 2>/dev/null)
+RL5H=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
+RL7D=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
 
 # ── Line 1 ─────────────────────────────────────────────────────────────────
 CTX_COLOR=$(color_for_pct "$CTX_PCT")
@@ -86,7 +82,12 @@ printf "\n"
 # ── Line 3 ─────────────────────────────────────────────────────────────────
 if [ -n "$TOTAL_COST" ] && [ "$TOTAL_COST" != "0" ]; then
     COST_DISPLAY=$(awk "BEGIN{printf \"\$%.2f\", $TOTAL_COST}" 2>/dev/null)
-    printf "${GREEN}💰 %s${RESET}\n" "$COST_DISPLAY"
+    printf "${GREEN}💰 %s${RESET}" "$COST_DISPLAY"
 else
-    printf "${DIM}💰 --${RESET}\n"
+    printf "${DIM}💰 --${RESET}"
 fi
+if [ -n "$RL5H" ] || [ -n "$RL7D" ]; then
+    [ -n "$RL5H" ] && printf "  ${GRAY}│${RESET} ⏱ ${YELLOW}5h: %d%%${RESET}" "$RL5H"
+    [ -n "$RL7D" ] && printf "  ${GRAY}│${RESET} 📅 ${YELLOW}7d: %d%%${RESET}" "$RL7D"
+fi
+printf "\n"
