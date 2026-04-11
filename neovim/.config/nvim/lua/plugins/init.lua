@@ -123,6 +123,21 @@ return {
     end,
   },
 
+  -- PlantUML
+  {
+    "tyru/open-browser.vim",
+    lazy = true,
+  },
+  {
+    "weirongxu/plantuml-previewer.vim",
+    dependencies = { "tyru/open-browser.vim" },
+    ft = { "plantuml" },
+  },
+  {
+    "aklt/plantuml-syntax",
+    ft = { "plantuml" },
+  },
+
   -- ステータスライン
   {
     "nvim-lualine/lualine.nvim",

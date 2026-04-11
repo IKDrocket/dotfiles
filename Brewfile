@@ -40,6 +40,9 @@ brew "uv"             # Python パッケージマネージャ（uvx で MCP サ�
 brew "shellcheck"     # bash-language-server が診断に使用
 brew "shfmt"          # Shell スクリプトフォーマッタ
 brew "openjdk"
+brew "plantuml"
+brew "graphviz"        # Graphviz ダイアグラム生成
+brew "plantuml"       # PlantUML ダイアグラム生成
 brew "hadolint"       # Dockerfile linter
 brew "aquasecurity/trivy/trivy"  # コンテナ脆弱性スキャン
 
