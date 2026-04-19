@@ -97,7 +97,16 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require("telescope").setup()
+      require("telescope").setup({
+        pickers = {
+          buffers = {
+            mappings = {
+              i = { ["<C-x>"] = require("telescope.actions").delete_buffer },
+              n = { ["<C-x>"] = require("telescope.actions").delete_buffer },
+            },
+          },
+        },
+      })
     end,
   },
 
