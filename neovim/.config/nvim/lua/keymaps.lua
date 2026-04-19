@@ -18,11 +18,17 @@ vim.keymap.set("n", "<D-p>", "<cmd>Telescope find_files<cr>")
 vim.keymap.set("n", "<D-S-F>", "<cmd>Telescope live_grep<cr>")
 vim.keymap.set("n", "<D-b>", "<cmd>Telescope buffers<cr>")
 
--- Telescope
-vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
-vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
-vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
+-- Git
+vim.keymap.set("n", "]g", "<cmd>Gitsigns next_hunk<cr>", { desc = "Next git hunk" })
+vim.keymap.set("n", "[g", "<cmd>Gitsigns prev_hunk<cr>", { desc = "Previous git hunk" })
+vim.keymap.set("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<cr>", { desc = "Preview git hunk" })
+vim.keymap.set("n", "<leader>gs", "<cmd>Gitsigns stage_hunk<cr>", { desc = "Stage git hunk" })
+vim.keymap.set("n", "<leader>gr", "<cmd>Gitsigns reset_hunk<cr>", { desc = "Reset git hunk" })
+vim.keymap.set("n", "<leader>gb", "<cmd>Gitsigns blame_line<cr>", { desc = "Git blame" })
+vim.keymap.set("n", "<leader>gd", "<cmd>Gitsigns diffthis<cr>", { desc = "Git diff (inline)" })
+vim.keymap.set("n", "<leader>gD", "<cmd>DiffviewOpen<cr>", { desc = "Git diff view" })
+vim.keymap.set("n", "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", { desc = "File git history" })
+vim.keymap.set("n", "<leader>gq", "<cmd>DiffviewClose<cr>", { desc = "Close diff view" })
 
 -- PlantUML
 vim.keymap.set("n", "<leader>pu", "<cmd>PlantumlOpen<cr>", { desc = "PlantUML preview" })
-
