@@ -41,7 +41,7 @@ return {
       })
       -- インストール済みサーバーは automatic_enable（デフォルト true）で自動的に vim.lsp.enable() される
       require("mason-lspconfig").setup({
-        ensure_installed = { "bashls" },
+        ensure_installed = { "bashls", "ts_ls" },
         automatic_installation = false,
       })
     end,
