@@ -37,3 +37,6 @@ vim.opt.clipboard = "unnamedplus"
 -- ウィンドウ分割
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+-- 行頭/行末で左右カーソルが前後の行に移動する
+vim.opt.whichwrap = "b,s,<,>,[,]"
