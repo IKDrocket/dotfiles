@@ -21,6 +21,7 @@ brew "gnu-time"
 brew "jq"
 brew "tree"
 brew "ghostscript"
+brew "fd"
 
 # ──────────────────────────────────────────
 # Git
