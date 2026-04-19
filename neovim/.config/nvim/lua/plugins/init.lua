@@ -146,6 +146,40 @@ return {
     "aklt/plantuml-syntax",
     ft = { "plantuml" },
   },
+   {
+      -- スクロールバー
+      "petertriho/nvim-scrollbar",
+      event = "VimEnter",
+      dependencies = {
+         "lewis6991/gitsigns.nvim",
+         "kevinhwang91/nvim-hlslens", -- ← 検索ハイライトも使うなら
+      },
+   },
+   {
+      -- git blame, nvim-scrollbarと連携して差分表示
+      "lewis6991/gitsigns.nvim",
+      config = function()
+         require("scrollbar.handlers.gitsigns").setup()
+      end
+   },
+   {
+      "kevinhwang91/nvim-hlslens",
+      config = function()
+         require("hlslens").setup({
+            build_position_cb = function(plist, _, _, _)
+               require("scrollbar.handlers.search").handler.show(plist.start_pos)
+            end,
+         })
+      end
+   },
+   {
+      "sindrets/diffview.nvim",
+      event = "BufReadPre",
+      dependencies = {
+         "nvim-lua/plenary.nvim",
+         "nvim-tree/nvim-web-devicons",
+      },
+   },
 
   -- ステータスライン
   {
