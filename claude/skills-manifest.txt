@@ -1,0 +1,14 @@
+# 外部リポジトリから取得する Claude Code スキルの一覧
+# インストール先: claude/skills/external/ (gitignore 対象)
+#
+# フォーマット:
+#   OWNER/REPO SKILL_NAME[@VERSION]               # 標準リポジトリ (skills/*/SKILL.md)
+#   OWNER/REPO SKILL_NAME PATH_IN_REPO            # 非標準リポジトリ (dotfiles 等)
+#
+# 例:
+#   anthropics/claude-code-skills git-commit@v1.0.0
+#   mizchi/chezmoi-dotfiles empirical-prompt-tuning dot_claude/skills
+#
+# 標準リポジトリ
+anthropics/skills frontend-design
+vercel-labs/agent-skills react-best-practices

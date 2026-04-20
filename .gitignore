@@ -4,3 +4,6 @@
 *secret*
 *.pem
 *.key
+
+# 外部リポジトリから取得した skills（skills-manifest.txt で管理）
+claude/skills/external/

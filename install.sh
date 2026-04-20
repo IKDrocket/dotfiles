@@ -70,7 +70,12 @@ else
 fi
 
 # ──────────────────────────────────────────
-# 8. VS Code 拡張機能の一括インストール
+# 8. 外部 Claude Code スキルの取得
+# ──────────────────────────────────────────
+bash "$DOTFILES_DIR/claude/sync-skills.sh" || echo "==> Skipping external skills."
+
+# ──────────────────────────────────────────
+# 9. VS Code 拡張機能の一括インストール
 # ──────────────────────────────────────────
 if command -v code &>/dev/null; then
   echo "==> Installing VS Code extensions..."
