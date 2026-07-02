@@ -1,23 +1,5 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "model": "opusplan",
-  "defaultMode": "auto",
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/statusline.sh"
-  },
-  "hooks": {
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "afplay /System/Library/Sounds/Glass.aiff"
-          }
-        ]
-      }
-    ]
-  },
   "permissions": {
     "allow": [
       "WebFetch",
@@ -50,16 +32,43 @@
     "ask": [],
     "disableBypassPermissionsMode": "disable"
   },
+  "model": "opusplan",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Glass.aiff"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  },
   "sandbox": {
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
-    "excludedCommands": ["git"],
     "allowUnsandboxedCommands": false,
     "network": {
-      "allowedDomains": ["github.com", "*.npmjs.org"]
+      "allowedDomains": [
+        "github.com",
+        "*.npmjs.org"
+      ]
     },
     "filesystem": {
-      "denyRead": ["~/.aws/credentials", "~/.ssh"]
-    }
-  }
+      "denyRead": [
+        "~/.aws/credentials",
+        "~/.ssh"
+      ]
+    },
+    "excludedCommands": [
+      "git"
+    ]
+  },
+  "agentPushNotifEnabled": true,
+  "defaultMode": "auto"
 }
