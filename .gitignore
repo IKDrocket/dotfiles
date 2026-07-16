@@ -40,6 +40,11 @@
 !/claude/skills/repository-structure/
 !/claude/skills/steering/
 !/claude/skills/task-flow/
+!/claude/skills/browser-debug/
+!/claude/skills/browser-e2e/
+!/claude/skills/browser-perf/
+!/claude/skills/browser-verify/
+!/claude/skills/browser-tool-select/
 
 # --- 許可したディレクトリ内でも除外するもの ---
 .DS_Store

@@ -54,19 +54,16 @@
     "autoAllowBashIfSandboxed": true,
     "allowUnsandboxedCommands": false,
     "network": {
-      "allowedDomains": [
-        "github.com",
-        "*.npmjs.org"
-      ]
+      "allowedDomains": ["github.com", "*.npmjs.org"]
     },
     "filesystem": {
-      "denyRead": [
-        "~/.aws/credentials",
-        "~/.ssh"
-      ]
+      "denyRead": ["~/.aws/credentials", "~/.ssh"]
     },
     "excludedCommands": [
-      "git"
+      "git",
+      "agent-browser *",
+      "playwright-cli *",
+      "npx playwright *"
     ]
   },
   "agentPushNotifEnabled": true,

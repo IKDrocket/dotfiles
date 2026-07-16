@@ -46,6 +46,8 @@ brew "graphviz"        # Graphviz ダイアグラム生成
 brew "plantuml"       # PlantUML ダイアグラム生成
 brew "hadolint"       # Dockerfile linter
 brew "aquasecurity/trivy/trivy"  # コンテナ脆弱性スキャン
+brew "agent-browser"
+brew "playwright-cli"
 
 # ──────────────────────────────────────────
 # デスクトップアプリケーションの管理
