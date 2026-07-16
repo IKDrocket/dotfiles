@@ -79,7 +79,7 @@
     "!Split sequence",
   ],
   "yaml.validate": false,
-  "githubPullRequests.fileListLayout": "flat",
+  "githubPullRequests.fileListLayout": "tree",
   "[sql]": {
     "editor.defaultFormatter": "adpyke.vscode-sql-formatter",
   },
@@ -185,6 +185,107 @@
     "https://biomejs.dev": true,
   },
   "github.copilot.chat.commitMessageGeneration.instructions": [
-    { "text": "日本語で記述してください" },
+    {
+      "text": "必ず日本語で記述してください",
+    },
+    {
+      "text": "コミットメッセージは、最初にConventional Commitsに則って記述してください",
+    },
+    {
+      "text": "その後ファイルごとの詳細な変更内容を記述してください",
+    },
   ],
+  "todo-tree.ripgrep.ripgrep": "/opt/homebrew/bin/rg",
+  "todo-tree.general.tags": [
+    "CHANGED",
+    "FIXME",
+    "NOTE",
+    "REVIEW",
+    "TODO",
+    "MEMO",
+    "WARNING",
+  ],
+  // "todo-tree.highlights.defaultHighlight": {
+  //   "icon": "checklist",
+  //   "type": "text",
+  //   "fontWeight": "bold"
+  // },
+  "todo-tree.highlights.customHighlight": {
+    "CHANGED": {
+      "foreground": "#F0C36D",
+    },
+    "FIXME": {
+      "icon": "flame",
+      "foreground": "#FF8C00",
+    },
+    "NOTE": {
+      "icon": "checklist",
+      "foreground": "#B0B0B0",
+    },
+    "MEMO": {
+      "icon": "checklist",
+      "foreground": "#B0B0B0",
+    },
+    "REVIEW": {
+      "icon": "code-review",
+      "foreground": "#2C7CFF",
+    },
+    "TODO": {
+      "foreground": "#00A000",
+    },
+    "WARNING": {
+      "icon": "alert",
+      "foreground": "#FF0000",
+    },
+  },
+  "better-comments.tags": [
+    {
+      "tag": "CHANGED",
+      "strikethrough": false,
+      "backgroundColor": "transparent",
+      "color": "#F0C36D",
+    },
+    {
+      "tag": "FIXME",
+      "strikethrough": false,
+      "backgroundColor": "transparent",
+      "color": "#FF8C00",
+    },
+    {
+      "tag": "NOTE",
+      "strikethrough": false,
+      "backgroundColor": "transparent",
+      "color": "#B0B0B0",
+    },
+    {
+      "tag": "MEMO",
+      "strikethrough": false,
+      "backgroundColor": "transparent",
+      "color": "#B0B0B0",
+    },
+    {
+      "tag": "REVIEW",
+      "strikethrough": false,
+      "backgroundColor": "transparent",
+      "color": "#2C7CFF",
+    },
+    {
+      "tag": "TODO",
+      "strikethrough": false,
+      "backgroundColor": "transparent",
+      "color": "#00A000",
+    },
+    {
+      "tag": "WARNING",
+      "strikethrough": false,
+      "backgroundColor": "transparent",
+      "color": "#FF0000",
+    },
+  ],
+  "chat.instructionsFilesLocations": {
+    ".github/instructions": true,
+    ".claude/rules": true,
+    "~/.copilot/instructions": true,
+    "~/.claude/rules": true,
+  },
 }
