@@ -1,12 +1,50 @@
+# ホワイトリスト方式: トップレベルはデフォルトで全て無視し、
+# 追跡するファイル・ディレクトリだけを ! で明示的に許可する。
+# 新しい dotfile を追加したらここに1行追加する。
+/*
+
+# --- 追跡するファイル ---
+!/.gitignore
+!/Brewfile
+!/CLAUDE.md
+!/README.md
+!/install.sh
+!/link.sh
+
+# --- 追跡するディレクトリ ---
+!/claude/
+!/ghostty/
+!/git/
+!/mise/
+!/neovim/
+!/starship/
+!/via/
+!/vim/
+!/vscode/
+!/zellij/
+!/zsh/
+
+# --- claude/skills はスキルごとにホワイトリスト指定 ---
+# 自作スキルを追加したらここに1行追加する。
+# 外部リポジトリ由来の skills（skills-manifest.txt で管理）は許可しない。
+/claude/skills/*
+!/claude/skills/architecture-design/
+!/claude/skills/career-change/
+!/claude/skills/commit-pr/
+!/claude/skills/debugging/
+!/claude/skills/development-guidelines/
+!/claude/skills/empirical-prompt-tuning/
+!/claude/skills/functional-design/
+!/claude/skills/glossary-creation/
+!/claude/skills/prd-writing/
+!/claude/skills/repository-structure/
+!/claude/skills/steering/
+!/claude/skills/task-flow/
+
+# --- 許可したディレクトリ内でも除外するもの ---
 .DS_Store
 *.log
 *credentials*
 *secret*
 *.pem
 *.key
-
-# 外部リポジトリから取得した skills（skills-manifest.txt で管理）
-# manifest にスキルを追加したらここにも1行追加する
-claude/skills/frontend-design/
-claude/skills/react-best-practices/
-claude/skills/external/
