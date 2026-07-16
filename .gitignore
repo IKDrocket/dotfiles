@@ -24,6 +24,17 @@
 !/zellij/
 !/zsh/
 
+# --- claude/commands はコマンドごとにホワイトリスト指定 ---
+# 自作コマンドを追加したらここに1行追加する。
+/claude/commands/*
+!/claude/commands/new-feature.md
+!/claude/commands/review-docs.md
+!/claude/commands/setup-project.md
+
+# --- claude/agents はエージェントごとにホワイトリスト指定 ---
+# 自作エージェントを追加したらここに1行追加する。
+/claude/agents/*
+
 # --- claude/skills はスキルごとにホワイトリスト指定 ---
 # 自作スキルを追加したらここに1行追加する。
 # 外部リポジトリ由来の skills（skills-manifest.txt で管理）は許可しない。
