@@ -30,6 +30,8 @@
 !/claude/commands/new-feature.md
 !/claude/commands/review-docs.md
 !/claude/commands/setup-project.md
+!/claude/commands/frontend-upgrade-research.md
+!/claude/commands/frontend-upgrade-run.md
 
 # --- claude/agents はエージェントごとにホワイトリスト指定 ---
 # 自作エージェントを追加したらここに1行追加する。
@@ -56,6 +58,14 @@
 !/claude/skills/browser-perf/
 !/claude/skills/browser-verify/
 !/claude/skills/browser-tool-select/
+!/claude/skills/frontend-lib-survey/
+!/claude/skills/frontend-lib-usage/
+!/claude/skills/frontend-migration-plan/
+!/claude/skills/frontend-safety-net-check/
+!/claude/skills/frontend-upgrade-execute/
+!/claude/skills/frontend-upgrade-release-check/
+!/claude/skills/frontend-upgrade-verify/
+
 
 # --- 許可したディレクトリ内でも除外するもの ---
 .DS_Store
