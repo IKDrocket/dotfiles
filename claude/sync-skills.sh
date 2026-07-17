@@ -4,8 +4,8 @@ set -e
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 MANIFEST="$DOTFILES_DIR/claude/skills-manifest.txt"
 # Claude Code は ~/.claude/skills/<name>/SKILL.md の1階層のみをスキャンするため、
-# サブディレクトリではなく claude/skills/ 直下にインストールする（.gitignore で個別に無視）
-SKILLS_DIR="$DOTFILES_DIR/claude/skills"
+# サブディレクトリではなく shared/skills/ 直下にインストールする（.gitignore で個別に無視）
+SKILLS_DIR="$DOTFILES_DIR/shared/skills"
 
 if ! command -v gh &>/dev/null; then
   echo "==> gh CLI not found. Install gh and re-run." >&2

@@ -1,6 +1,6 @@
-# Global Claude Code Instructions
+# Global Agent Instructions
 
-このファイルは全プロジェクト共通の Claude Code 動作指示。プロジェクト固有の指示は各リポジトリの `CLAUDE.md` に記載する。
+このファイルは全プロジェクト共通の AI コーディングエージェント（Claude Code / Codex）動作指示。プロジェクト固有の指示は各リポジトリの `CLAUDE.md` / `AGENTS.md` に記載する。
 
 ## Communication
 
@@ -19,7 +19,7 @@
 ## Workflow
 
 作業開始前に以下を確認する:
-1. プロジェクトの `CLAUDE.md` を読む
+1. プロジェクトの `CLAUDE.md` / `AGENTS.md` を読む
 2. `.steering/` ディレクトリが存在する場合は最新のステアリングファイルを確認する
 3. 新機能・大きな変更は `steering` スキルでステアリングドキュメントを作成してから実装する
 

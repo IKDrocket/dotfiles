@@ -41,11 +41,11 @@ Think in English, interact with the user in Japanese.
 | `neovim/.config/nvim` | `~/.config/nvim` |
 | `vscode/settings.json` | `~/Library/Application Support/Code/User/settings.json` |
 | `vscode/keybindings.json` | `~/Library/Application Support/Code/User/keybindings.json` |
+| `shared/AGENTS.md` | `~/.claude/CLAUDE.md`, `~/.codex/AGENTS.md` |
+| `shared/skills/` | `~/.claude/skills/`, `~/.agents/skills/` |
 | `claude/settings.json` | `~/.claude/settings.json` |
 | `claude/statusline.sh` | `~/.claude/statusline.sh` |
-| `claude/CLAUDE.md` | `~/.claude/CLAUDE.md` |
 | `claude/commands/` | `~/.claude/commands/` |
-| `claude/skills/` | `~/.claude/skills/` |
 | `claude/agents/` | `~/.claude/agents/` |
 
 ## Key Files
@@ -53,7 +53,8 @@ Think in English, interact with the user in Japanese.
 - **`Brewfile`** — Homebrew パッケージ・cask の一覧。新しいツールはここに追加する。
 - **`mise/config.toml`** — ランタイムバージョン管理（Node 24 / Python 3.13 / Go 1 / AWS CLI 2.22.12）。
 - **`neovim/.config/nvim/`** — lazy.nvim を使った Neovim 設定。エントリポイントは `init.lua`、プラグインは `lua/plugins/init.lua`、オプションは `lua/options.lua`、キーマップは `lua/keymaps.lua`。
-- **`claude/`** — Claude Code グローバル設定（設定・スラッシュコマンド・スキル・エージェント）。
+- **`shared/`** — Claude Code / Codex 共有の AI エージェント資産。`AGENTS.md`（共通グローバル指示）と `skills/`（Agent Skills 標準の SKILL.md 群）。両ツールのグローバルパスに同じ実体をリンクする。
+- **`claude/`** — Claude Code 固有のグローバル設定（settings.json・statusline・スラッシュコマンド・エージェント）。
 
 ## Neovim Plugin Stack
 

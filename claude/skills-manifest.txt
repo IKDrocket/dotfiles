@@ -1,5 +1,5 @@
 # 外部リポジトリから取得する Claude Code スキルの一覧
-# インストール先: claude/skills/ 直下 (スキルごとに .gitignore へ追加する)
+# インストール先: shared/skills/ 直下 (スキルごとに .gitignore へ追加する)
 #
 # フォーマット:
 #   OWNER/REPO SKILL_NAME[@VERSION]               # 標準リポジトリ (skills/*/SKILL.md)

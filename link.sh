@@ -36,14 +36,19 @@ VSCODE_USER_DIR="$HOME/Library/Application Support/Code/User"
 link "$DOTFILES_DIR/vscode/settings.json"    "$VSCODE_USER_DIR/settings.json"
 link "$DOTFILES_DIR/vscode/keybindings.json" "$VSCODE_USER_DIR/keybindings.json"
 
-# Claude Code 設定
+# 共通 AI エージェント資産（Claude Code / Codex で共有）
+# skills は Agent Skills 標準（SKILL.md）なので両ツールから同じ実体を参照する
+link "$DOTFILES_DIR/shared/AGENTS.md"      "$HOME/.claude/CLAUDE.md"
+link "$DOTFILES_DIR/shared/AGENTS.md"      "$HOME/.codex/AGENTS.md"
+link "$DOTFILES_DIR/shared/skills"         "$HOME/.claude/skills"
+link "$DOTFILES_DIR/shared/skills"         "$HOME/.agents/skills"
+
+# Claude Code 固有設定
 CLAUDE_DIR="$HOME/.claude"
 link "$DOTFILES_DIR/claude/settings.json"  "$CLAUDE_DIR/settings.json"
 link "$DOTFILES_DIR/claude/statusline.sh"  "$CLAUDE_DIR/statusline.sh"
 chmod +x "$DOTFILES_DIR/claude/statusline.sh"
-link "$DOTFILES_DIR/claude/CLAUDE.md"      "$CLAUDE_DIR/CLAUDE.md"
 link "$DOTFILES_DIR/claude/commands"       "$CLAUDE_DIR/commands"
-link "$DOTFILES_DIR/claude/skills"         "$CLAUDE_DIR/skills"
 link "$DOTFILES_DIR/claude/agents"         "$CLAUDE_DIR/agents"
 
 echo "==> Symlinks created."

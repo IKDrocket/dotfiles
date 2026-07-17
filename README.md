@@ -31,11 +31,11 @@ cd ~/dotfiles
 | `starship/starship.toml`  | `~/.config/starship.toml`                                    |
 | `neovim/.config/nvim`     | `~/.config/nvim`                                             |
 | `zellij/config.kdl`       | `~/.config/zellij/config.kdl`                                |
+| `shared/AGENTS.md`        | `~/.claude/CLAUDE.md` と `~/.codex/AGENTS.md`                |
+| `shared/skills/`          | `~/.claude/skills/` と `~/.agents/skills/`                   |
 | `claude/settings.json`    | `~/.claude/settings.json`                                    |
 | `claude/statusline.sh`    | `~/.claude/statusline.sh`                                    |
-| `claude/CLAUDE.md`        | `~/.claude/CLAUDE.md`                                        |
 | `claude/commands/`        | `~/.claude/commands/`                                        |
-| `claude/skills/`          | `~/.claude/skills/`                                          |
 | `claude/agents/`          | `~/.claude/agents/`                                          |
 | `vscode/settings.json`    | `~/Library/Application Support/Code/User/settings.json`      |
 | `vscode/keybindings.json` | `~/Library/Application Support/Code/User/keybindings.json`   |
@@ -67,13 +67,14 @@ dotfiles/
 │   └── .config/nvim/        # lazy.nvim ベースの Neovim 設定
 ├── zellij/
 │   └── config.kdl
-├── claude/
+├── shared/                  # Claude Code / Codex 共有の AI エージェント資産
+│   ├── AGENTS.md            # 共通グローバル指示（~/.claude/CLAUDE.md と ~/.codex/AGENTS.md の実体）
+│   └── skills/              # Agent Skills 標準（SKILL.md）のスキル群
+├── claude/                  # Claude Code 固有設定
 │   ├── settings.json
 │   ├── statusline.sh
 │   ├── setup-mcp.sh        # MCP サーバー登録スクリプト
-│   ├── CLAUDE.md
 │   ├── commands/
-│   ├── skills/
 │   └── agents/
 ├── via/
 │   └── EPOMAKER Split65/    # キーボードレイアウト設定
