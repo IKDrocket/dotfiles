@@ -2,16 +2,40 @@
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
     "allow": [
-      "WebFetch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:zenn.dev)",
       "WebSearch",
-      "Bash(npm run *)",
-      "Bash(git status)",
-      "Bash(git diff *)",
-      "Bash(git log *)",
-      "Read(./src/**)",
-      "Read(./docs/**)",
-      "Edit(./src/**)",
-      "Edit(./docs/**)",
+      "Bash(gh pr view:*)",
+      "Bash(gh run view:*)",
+      "Bash(gh pr list:*)",
+      "Bash(gh issue view:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(wc:*)",
+      "Bash(sort:*)",
+      "Bash(which:*)",
+      "Bash(type:*)",
+      "Bash(echo:*)",
+      "Bash(pwd:*)",
+      "Bash(dirname:*)",
+      "Bash(basename:*)",
+      "Bash(grep:*)",
+      "Bash(rg:*)",
+      "Bash(find:*)",
+      "Bash(git fetch:*)",
+      "Bash(git push:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(git status:*)",
+      "Bash(git show:*)",
+      "Bash(git branch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git stash:*)",
+      "Bash(git merge:*)",
+      "Bash(pnpm install:*)",
       "Skill(steering)"
     ],
     "deny": [
@@ -21,7 +45,6 @@
       "Read(./config/credentials.json)",
       "Read(**/*.pem)",
       "Read(**/*.key)",
-      "Bash(git push *)",
       "Bash(git commit --no-verify *)",
       "Bash(git commit -n *)",
       "Bash(rm -rf *)",
@@ -32,7 +55,7 @@
     "ask": [],
     "disableBypassPermissionsMode": "disable"
   },
-  "model": "opusplan",
+  "model": "claude-opus-4-8[1m]",
   "hooks": {
     "Stop": [
       {
@@ -49,16 +72,30 @@
     "type": "command",
     "command": "~/.claude/statusline.sh"
   },
+  "extraKnownMarketplaces": {
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
+      }
+    }
+  },
   "sandbox": {
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
-    "allowUnsandboxedCommands": false,
     "network": {
-      "allowedDomains": ["github.com", "*.npmjs.org"]
+      "allowedDomains": [
+        "github.com",
+        "api.github.com"
+      ]
     },
     "filesystem": {
-      "denyRead": ["~/.aws/credentials", "~/.ssh"]
+      "denyRead": [
+        "~/.aws/credentials",
+        "~/.ssh"
+      ]
     },
+    "enableWeakerNetworkIsolation": true,
     "excludedCommands": [
       "git",
       "agent-browser *",
@@ -66,6 +103,10 @@
       "npx playwright *"
     ]
   },
+  "switchModelsOnFlag": true,
   "agentPushNotifEnabled": true,
-  "defaultMode": "auto"
+  "defaultMode": "auto",
+  "enabledPlugins": {
+    "codex@openai-codex": true
+  }
 }
