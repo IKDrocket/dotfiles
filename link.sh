@@ -2,6 +2,7 @@
 set -e
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+HOME_MIRROR="$DOTFILES_DIR/home"
 
 echo "==> Creating symlinks..."
 
@@ -25,33 +26,38 @@ link() {
   LINKED_DESTS+=("$dest")
 }
 
-link "$DOTFILES_DIR/zsh/.zshrc"             "$HOME/.zshrc"
-link "$DOTFILES_DIR/git/.gitconfig"         "$HOME/.gitconfig"
-link "$DOTFILES_DIR/vim/.vimrc"             "$HOME/.vimrc"
-link "$DOTFILES_DIR/mise/config.toml"       "$HOME/.config/mise/config.toml"
-link "$DOTFILES_DIR/ghostty/config"         "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
-link "$DOTFILES_DIR/starship/starship.toml" "$HOME/.config/starship.toml"
-link "$DOTFILES_DIR/neovim/.config/nvim"   "$HOME/.config/nvim"
-link "$DOTFILES_DIR/zellij/config.kdl"    "$HOME/.config/zellij/config.kdl"
+# home/ 配下は $HOME のミラー。リポジトリ上の階層と配置先の階層が一致するので、
+# home 相対パス1つだけで「どこに置かれるか」が自明になる（配置先は自動導出）。
+link_home() {
+  local rel="$1"
+  link "$HOME_MIRROR/$rel" "$HOME/$rel"
+}
 
-# VS Code 設定（macOS のパス）
-VSCODE_USER_DIR="$HOME/Library/Application Support/Code/User"
-link "$DOTFILES_DIR/vscode/settings.json"    "$VSCODE_USER_DIR/settings.json"
-link "$DOTFILES_DIR/vscode/keybindings.json" "$VSCODE_USER_DIR/keybindings.json"
+# --- $HOME ミラー（home/ 配下 = ~ の実配置と同形）---
+link_home ".zshrc"
+link_home ".gitconfig"
+link_home ".vimrc"
+link_home ".config/mise/config.toml"
+link_home ".config/starship.toml"
+link_home ".config/nvim"
+link_home ".config/zellij/config.kdl"
+link_home ".claude/settings.json"
+link_home ".claude/statusline.sh"
+link_home ".claude/commands"
+chmod +x "$HOME_MIRROR/.claude/statusline.sh"
 
-# 共通 AI エージェント資産（Claude Code / Codex で共有）
-# skills は Agent Skills 標準（SKILL.md）なので両ツールから同じ実体を参照する
+# --- 例外1: 1つの実体を複数箇所へ別名で配る共有アセット（ミラーは1対1前提のため表現不可）---
+# skills は Agent Skills 標準（SKILL.md）なので Claude Code / Codex から同じ実体を参照する。
 link "$DOTFILES_DIR/shared/AGENTS.md"      "$HOME/.claude/CLAUDE.md"
 link "$DOTFILES_DIR/shared/AGENTS.md"      "$HOME/.codex/AGENTS.md"
 link "$DOTFILES_DIR/shared/skills"         "$HOME/.claude/skills"
 link "$DOTFILES_DIR/shared/skills"         "$HOME/.agents/skills"
 
-# Claude Code 固有設定
-CLAUDE_DIR="$HOME/.claude"
-link "$DOTFILES_DIR/claude/settings.json"  "$CLAUDE_DIR/settings.json"
-link "$DOTFILES_DIR/claude/statusline.sh"  "$CLAUDE_DIR/statusline.sh"
-chmod +x "$DOTFILES_DIR/claude/statusline.sh"
-link "$DOTFILES_DIR/claude/commands"       "$CLAUDE_DIR/commands"
+# --- 例外2: Library 配下のアプリ設定（空白入りの深いパスなのでミラーに載せない）---
+VSCODE_USER_DIR="$HOME/Library/Application Support/Code/User"
+link "$DOTFILES_DIR/vscode/settings.json"    "$VSCODE_USER_DIR/settings.json"
+link "$DOTFILES_DIR/vscode/keybindings.json" "$VSCODE_USER_DIR/keybindings.json"
+link "$DOTFILES_DIR/ghostty/config"          "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
 
 echo "==> Symlinks created."
 

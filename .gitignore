@@ -12,27 +12,22 @@
 !/link.sh
 
 # --- 追跡するディレクトリ ---
+# home/ は $HOME のミラー（配下は自動追跡）。それ以外は例外アセット・repo ツール。
+!/home/
 !/claude/
 !/shared/
 !/ghostty/
-!/git/
-!/mise/
-!/neovim/
-!/starship/
 !/via/
-!/vim/
 !/vscode/
-!/zellij/
-!/zsh/
 
-# --- claude/commands はコマンドごとにホワイトリスト指定 ---
+# --- home/.claude/commands はコマンドごとにホワイトリスト指定 ---
 # 自作コマンドを追加したらここに1行追加する。
-/claude/commands/*
-!/claude/commands/new-feature.md
-!/claude/commands/review-docs.md
-!/claude/commands/setup-project.md
-!/claude/commands/frontend-upgrade-research.md
-!/claude/commands/frontend-upgrade-run.md
+/home/.claude/commands/*
+!/home/.claude/commands/new-feature.md
+!/home/.claude/commands/review-docs.md
+!/home/.claude/commands/setup-project.md
+!/home/.claude/commands/frontend-upgrade-research.md
+!/home/.claude/commands/frontend-upgrade-run.md
 
 # --- claude/agents はエージェントごとにホワイトリスト指定 ---
 # 自作エージェントを追加したらここに1行追加する。
