@@ -19,6 +19,15 @@ cd ~/dotfiles
 5. **Claude Code MCP サーバー** の登録（claude/setup-mcp.sh 実行）
 6. **VS Code 拡張機能** の一括インストール
 
+### シンボリックリンクの再作成（メンテナンス時）
+
+`link.sh` はデフォルトで **dry-run**（実行予定の操作を表示するだけで何も変更しない）。削除対象を確認してから反映できます。
+
+```bash
+./link.sh           # dry-run: 何をするか表示するだけ
+./link.sh --apply   # 実際にリンクを作成・削除する
+```
+
 ## 管理ファイル一覧
 
 `home/` 配下は `$HOME` のミラーで、リポジトリ上の階層がそのまま配置先になります（`home/.config/nvim` → `~/.config/nvim`）。`shared/` と Library 配下のアプリ設定は 1 対多・特殊パスのため例外扱いです。

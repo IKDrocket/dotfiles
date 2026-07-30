@@ -14,8 +14,11 @@ Think in English, interact with the user in Japanese.
 ./install.sh
 
 # シンボリックリンクのみ再作成（dotfiles メンテナンス時）
-./link.sh
+./link.sh           # デフォルトは dry-run（実行予定の操作を表示するだけ）
+./link.sh --apply   # 実際に反映する
 ```
+
+`link.sh` はデフォルトで dry-run。削除・退避・リンク作成の予定を表示するだけで何も変更しない。実際に反映するには `--apply` を渡す（`install.sh` は `--apply` 付きで呼ぶ）。
 
 このスクリプトは以下を順番に実行する:
 

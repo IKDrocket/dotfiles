@@ -4,6 +4,28 @@ set -e
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 HOME_MIRROR="$DOTFILES_DIR/home"
 
+# デフォルトは dry-run（削除・退避・リンク作成を一切行わず「何をするか」だけ表示）。
+# 実際に反映するには --apply を渡す。削除対象を事前確認してから反映できる。
+#   ./link.sh            # dry-run: 実行予定の操作を表示するだけ（デフォルト）
+#   ./link.sh --apply    # 実際にリンクを作成・削除する
+case "${1:-}" in
+  --apply|-a)      DRY_RUN=0 ;;
+  ""|--dry-run|-n) DRY_RUN=1 ;;
+  *) echo "Usage: ${BASH_SOURCE[0]} [--apply|--dry-run]" >&2; exit 1 ;;
+esac
+
+run() {
+  if [[ "$DRY_RUN" == "1" ]]; then
+    echo "      [dry-run] $*"
+  else
+    "$@"
+  fi
+}
+
+if [[ "$DRY_RUN" == "1" ]]; then
+  echo "==> [DRY-RUN] 実際の変更は行いません。反映するには: ./link.sh --apply"
+fi
+
 echo "==> Creating symlinks..."
 
 LINKED_DESTS=()
@@ -14,15 +36,28 @@ link() {
   local dest_dir
   dest_dir="$(dirname "$dest")"
 
-  mkdir -p "$dest_dir"
+  run mkdir -p "$dest_dir"
 
-  if [[ -e "$dest" && ! -L "$dest" ]]; then
-    echo "    Backing up existing $dest -> ${dest}.bak"
-    mv "$dest" "${dest}.bak"
+  # 既存リンクは有効/壊れ問わず先に除去してから貼り直す。
+  # ln -sf は dest がディレクトリを指すリンクだとその中に入れ子リンクを
+  # 作ってしまう（BSD/macOS ln の仕様）ため、rm で明示的に消してから ln -s する。
+  if [[ -L "$dest" ]]; then
+    local cur
+    cur="$(readlink "$dest")"
+    if [[ "$cur" == "$src" ]]; then
+      echo "    OK (既に正しいリンク): $dest -> $src"
+      LINKED_DESTS+=("$dest")
+      return
+    fi
+    echo "    既存リンクを削除して差し替え: $dest (現在 -> $cur)"
+    run rm -f "$dest"
+  elif [[ -e "$dest" ]]; then
+    echo "    実ファイルを退避: $dest -> ${dest}.bak"
+    run mv "$dest" "${dest}.bak"
   fi
 
-  ln -sf "$src" "$dest"
-  echo "    $dest -> $src"
+  run ln -s "$src" "$dest"
+  echo "    リンク作成: $dest -> $src"
   LINKED_DESTS+=("$dest")
 }
 
@@ -93,8 +128,8 @@ for dir in "${SCAN_DIRS[@]}"; do
     target="$(readlink "$link_path")"
     [[ "$target" == "$DOTFILES_DIR"/* ]] || continue
     if ! is_linked_dest "$link_path"; then
-      echo "    Removing stale link: $link_path -> $target"
-      rm "$link_path"
+      echo "    管理外の stale リンクを削除: $link_path -> $target"
+      run rm "$link_path"
     fi
   done < <(find "$dir" -maxdepth 1 -type l -print0)
 done
