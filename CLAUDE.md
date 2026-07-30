@@ -27,34 +27,37 @@ Think in English, interact with the user in Japanese.
 
 ## Architecture
 
-各ツールの設定はサブディレクトリに置き、`install.sh` がシンボリックリンクを張る構成:
+`install.sh` が `link.sh` を呼び、リポジトリ内のファイルを `$HOME` にシンボリックリンクで配置する構成。設定の大多数は `home/`（`$HOME` のミラー）に置き、リポジトリ上の階層がそのまま配置先になる（`home/.config/nvim` → `~/.config/nvim`）。`link.sh` の `link_home` は home 相対パス 1 つから配置先を自動導出する。ミラーで表現できない 2 種類は例外として明示的に `link` する:
+
+- **1 実体 → 複数箇所のファンアウト**: `shared/`（`AGENTS.md`・`skills/`）
+- **Library 配下の特殊パス**: `vscode/`・`ghostty/`
 
 | Source | Symlink target |
 |---|---|
-| `zsh/.zshrc` | `~/.zshrc` |
-| `git/.gitconfig` | `~/.gitconfig` |
-| `mise/config.toml` | `~/.config/mise/config.toml` |
-| `ghostty/config` | `~/Library/Application Support/com.mitchellh.ghostty/config` |
-| `starship/starship.toml` | `~/.config/starship.toml` |
-| `vim/.vimrc` | `~/.vimrc` |
-| `zellij/config.kdl` | `~/.config/zellij/config.kdl` |
-| `neovim/.config/nvim` | `~/.config/nvim` |
-| `vscode/settings.json` | `~/Library/Application Support/Code/User/settings.json` |
-| `vscode/keybindings.json` | `~/Library/Application Support/Code/User/keybindings.json` |
+| `home/.zshrc` | `~/.zshrc` |
+| `home/.gitconfig` | `~/.gitconfig` |
+| `home/.vimrc` | `~/.vimrc` |
+| `home/.config/mise/config.toml` | `~/.config/mise/config.toml` |
+| `home/.config/starship.toml` | `~/.config/starship.toml` |
+| `home/.config/nvim` | `~/.config/nvim` |
+| `home/.config/zellij/config.kdl` | `~/.config/zellij/config.kdl` |
+| `home/.claude/settings.json` | `~/.claude/settings.json` |
+| `home/.claude/statusline.sh` | `~/.claude/statusline.sh` |
+| `home/.claude/commands/` | `~/.claude/commands/` |
 | `shared/AGENTS.md` | `~/.claude/CLAUDE.md`, `~/.codex/AGENTS.md` |
 | `shared/skills/` | `~/.claude/skills/`, `~/.agents/skills/` |
-| `claude/settings.json` | `~/.claude/settings.json` |
-| `claude/statusline.sh` | `~/.claude/statusline.sh` |
-| `claude/commands/` | `~/.claude/commands/` |
-| `claude/agents/` | `~/.claude/agents/` |
+| `ghostty/config` | `~/Library/Application Support/com.mitchellh.ghostty/config` |
+| `vscode/settings.json` | `~/Library/Application Support/Code/User/settings.json` |
+| `vscode/keybindings.json` | `~/Library/Application Support/Code/User/keybindings.json` |
 
 ## Key Files
 
+- **`home/`** — `$HOME` のミラー。配下のファイルは同じ相対パスで `~` にリンクされる。
 - **`Brewfile`** — Homebrew パッケージ・cask の一覧。新しいツールはここに追加する。
-- **`mise/config.toml`** — ランタイムバージョン管理（Node 24 / Python 3.13 / Go 1 / AWS CLI 2.22.12）。
-- **`neovim/.config/nvim/`** — lazy.nvim を使った Neovim 設定。エントリポイントは `init.lua`、プラグインは `lua/plugins/init.lua`、オプションは `lua/options.lua`、キーマップは `lua/keymaps.lua`。
-- **`shared/`** — Claude Code / Codex 共有の AI エージェント資産。`AGENTS.md`（共通グローバル指示）と `skills/`（Agent Skills 標準の SKILL.md 群）。両ツールのグローバルパスに同じ実体をリンクする。
-- **`claude/`** — Claude Code 固有のグローバル設定（settings.json・statusline・スラッシュコマンド・エージェント）。
+- **`home/.config/mise/config.toml`** — ランタイムバージョン管理（Node 24 / Python 3.13 / Go 1 / AWS CLI 2.22.12）。
+- **`home/.config/nvim/`** — lazy.nvim を使った Neovim 設定。エントリポイントは `init.lua`、プラグインは `lua/plugins/init.lua`、オプションは `lua/options.lua`、キーマップは `lua/keymaps.lua`。
+- **`shared/`** — Claude Code / Codex 共有の AI エージェント資産。`AGENTS.md`（共通グローバル指示）と `skills/`（Agent Skills 標準の SKILL.md 群）。両ツールのグローバルパスに同じ実体をリンクする（1 実体 → 複数箇所なので `home/` ミラーではなく例外扱い）。
+- **`claude/`** — Claude Code 関連の repo ツールで `$HOME` には配置しない（`setup-mcp.sh`・`sync-skills.sh`・`skills-manifest.txt`）。グローバル設定の実体は `home/.claude/` 側にある。
 
 ## Neovim Plugin Stack
 
@@ -76,6 +79,7 @@ ls -la ~/Library/Application\ Support/Code/User/
 
 ## Adding a New Dotfile
 
-1. 対応するサブディレクトリに設定ファイルを配置する
-2. `link.sh` に `link` 呼び出しを追加する
-3. `README.md` のシンボリックリンク一覧を更新する
+1. `home/` 配下に、`$HOME` での配置先と同じ相対パスで設定ファイルを置く（例: `~/.config/foo/bar` → `home/.config/foo/bar`）
+2. `link.sh` に `link_home "<home 相対パス>"` を 1 行追加する（Library 配下やファンアウトが必要な場合のみ例外セクションに `link` を追加）
+3. `.gitignore` は `/*` のホワイトリスト方式。`home/` 配下は追跡対象だが、`home/.claude/commands/*` のように個別許可している箇所へ追加する場合は `!` 行も足す
+4. `README.md` / この表のリンク一覧を更新する

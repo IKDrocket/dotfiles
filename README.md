@@ -21,24 +21,25 @@ cd ~/dotfiles
 
 ## 管理ファイル一覧
 
-| dotfiles パス             | リンク先                                                     |
-| ------------------------- | ------------------------------------------------------------ |
-| `zsh/.zshrc`              | `~/.zshrc`                                                   |
-| `git/.gitconfig`          | `~/.gitconfig`                                               |
-| `vim/.vimrc`              | `~/.vimrc`                                                   |
-| `mise/config.toml`        | `~/.config/mise/config.toml`                                 |
-| `ghostty/config`          | `~/Library/Application Support/com.mitchellh.ghostty/config` |
-| `starship/starship.toml`  | `~/.config/starship.toml`                                    |
-| `neovim/.config/nvim`     | `~/.config/nvim`                                             |
-| `zellij/config.kdl`       | `~/.config/zellij/config.kdl`                                |
-| `shared/AGENTS.md`        | `~/.claude/CLAUDE.md` と `~/.codex/AGENTS.md`                |
-| `shared/skills/`          | `~/.claude/skills/` と `~/.agents/skills/`                   |
-| `claude/settings.json`    | `~/.claude/settings.json`                                    |
-| `claude/statusline.sh`    | `~/.claude/statusline.sh`                                    |
-| `claude/commands/`        | `~/.claude/commands/`                                        |
-| `claude/agents/`          | `~/.claude/agents/`                                          |
-| `vscode/settings.json`    | `~/Library/Application Support/Code/User/settings.json`      |
-| `vscode/keybindings.json` | `~/Library/Application Support/Code/User/keybindings.json`   |
+`home/` 配下は `$HOME` のミラーで、リポジトリ上の階層がそのまま配置先になります（`home/.config/nvim` → `~/.config/nvim`）。`shared/` と Library 配下のアプリ設定は 1 対多・特殊パスのため例外扱いです。
+
+| dotfiles パス                    | リンク先                                                     |
+| -------------------------------- | ------------------------------------------------------------ |
+| `home/.zshrc`                    | `~/.zshrc`                                                   |
+| `home/.gitconfig`                | `~/.gitconfig`                                               |
+| `home/.vimrc`                    | `~/.vimrc`                                                   |
+| `home/.config/mise/config.toml`  | `~/.config/mise/config.toml`                                 |
+| `home/.config/starship.toml`     | `~/.config/starship.toml`                                    |
+| `home/.config/nvim/`             | `~/.config/nvim/`                                            |
+| `home/.config/zellij/config.kdl` | `~/.config/zellij/config.kdl`                                |
+| `home/.claude/settings.json`     | `~/.claude/settings.json`                                    |
+| `home/.claude/statusline.sh`     | `~/.claude/statusline.sh`                                    |
+| `home/.claude/commands/`         | `~/.claude/commands/`                                        |
+| `shared/AGENTS.md`               | `~/.claude/CLAUDE.md` と `~/.codex/AGENTS.md`                |
+| `shared/skills/`                 | `~/.claude/skills/` と `~/.agents/skills/`                   |
+| `ghostty/config`                 | `~/Library/Application Support/com.mitchellh.ghostty/config` |
+| `vscode/settings.json`           | `~/Library/Application Support/Code/User/settings.json`      |
+| `vscode/keybindings.json`        | `~/Library/Application Support/Code/User/keybindings.json`   |
 
 ## ディレクトリ構造
 
@@ -50,34 +51,30 @@ dotfiles/
 ├── .gitignore
 ├── README.md
 ├── CLAUDE.md
-├── zsh/
+├── home/                    # $HOME のミラー（配下がそのまま ~ に配置される）
 │   ├── .zshrc
-│   └── .zprofile
-├── git/
-│   └── .gitconfig
-├── vim/
-│   └── .vimrc
-├── mise/
-│   └── config.toml
-├── ghostty/
-│   └── config
-├── starship/
-│   └── starship.toml
-├── neovim/
-│   └── .config/nvim/        # lazy.nvim ベースの Neovim 設定
-├── zellij/
-│   └── config.kdl
-├── shared/                  # Claude Code / Codex 共有の AI エージェント資産
+│   ├── .gitconfig
+│   ├── .vimrc
+│   ├── .config/
+│   │   ├── mise/config.toml
+│   │   ├── starship.toml
+│   │   ├── nvim/            # lazy.nvim ベースの Neovim 設定
+│   │   └── zellij/config.kdl
+│   └── .claude/
+│       ├── settings.json
+│       ├── statusline.sh
+│       └── commands/
+├── shared/                  # Claude Code / Codex 共有の AI エージェント資産（1 実体を複数箇所へ配布）
 │   ├── AGENTS.md            # 共通グローバル指示（~/.claude/CLAUDE.md と ~/.codex/AGENTS.md の実体）
 │   └── skills/              # Agent Skills 標準（SKILL.md）のスキル群
-├── claude/                  # Claude Code 固有設定
-│   ├── settings.json
-│   ├── statusline.sh
-│   ├── setup-mcp.sh        # MCP サーバー登録スクリプト
-│   ├── commands/
-│   └── agents/
+├── claude/                  # Claude Code 関連の repo ツール（$HOME には配置しない）
+│   ├── setup-mcp.sh         # MCP サーバー登録スクリプト
+│   ├── sync-skills.sh       # 外部 skills 同期スクリプト
+│   └── skills-manifest.txt  # 外部 skills の一覧
 ├── via/
 │   └── EPOMAKER Split65/    # キーボードレイアウト設定
+├── ghostty/
+│   └── config
 └── vscode/
     ├── settings.json
     ├── keybindings.json
