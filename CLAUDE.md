@@ -47,7 +47,8 @@ Think in English, interact with the user in Japanese.
 | `home/.claude/settings.json` | `~/.claude/settings.json` |
 | `home/.claude/statusline.sh` | `~/.claude/statusline.sh` |
 | `home/.claude/commands/` | `~/.claude/commands/` |
-| `shared/AGENTS.md` | `~/.claude/CLAUDE.md`, `~/.codex/AGENTS.md` |
+| `shared/CLAUDE.md` | `~/.claude/CLAUDE.md` |
+| `shared/AGENTS.md` | `~/.claude/AGENTS.md`, `~/.codex/AGENTS.md` |
 | `shared/skills/` | `~/.claude/skills/`, `~/.agents/skills/` |
 | `ghostty/config` | `~/Library/Application Support/com.mitchellh.ghostty/config` |
 | `vscode/settings.json` | `~/Library/Application Support/Code/User/settings.json` |
@@ -59,7 +60,7 @@ Think in English, interact with the user in Japanese.
 - **`Brewfile`** — Homebrew パッケージ・cask の一覧。新しいツールはここに追加する。
 - **`home/.config/mise/config.toml`** — ランタイムバージョン管理（Node 24 / Python 3.13 / Go 1 / AWS CLI 2.22.12）。
 - **`home/.config/nvim/`** — lazy.nvim を使った Neovim 設定。エントリポイントは `init.lua`、プラグインは `lua/plugins/init.lua`、オプションは `lua/options.lua`、キーマップは `lua/keymaps.lua`。
-- **`shared/`** — Claude Code / Codex 共有の AI エージェント資産。`AGENTS.md`（共通グローバル指示）と `skills/`（Agent Skills 標準の SKILL.md 群）。両ツールのグローバルパスに同じ実体をリンクする（1 実体 → 複数箇所なので `home/` ミラーではなく例外扱い）。
+- **`shared/`** — Claude Code / Codex 共有の AI エージェント資産。`AGENTS.md`（共通グローバル指示）と `skills/`（Agent Skills 標準の SKILL.md 群）。両ツールのグローバルパスに同じ実体をリンクする（1 実体 → 複数箇所なので `home/` ミラーではなく例外扱い）。Claude Code は `AGENTS.md` を読まないため、`CLAUDE.md`（`@~/.claude/AGENTS.md` を import するだけの薄いファイル）を経由させる。
 - **`claude/`** — Claude Code 関連の repo ツールで `$HOME` には配置しない（`setup-mcp.sh`・`sync-skills.sh`・`skills-manifest.txt`）。グローバル設定の実体は `home/.claude/` 側にある。
 
 ## Neovim Plugin Stack

@@ -44,7 +44,8 @@ cd ~/dotfiles
 | `home/.claude/settings.json`     | `~/.claude/settings.json`                                    |
 | `home/.claude/statusline.sh`     | `~/.claude/statusline.sh`                                    |
 | `home/.claude/commands/`         | `~/.claude/commands/`                                        |
-| `shared/AGENTS.md`               | `~/.claude/CLAUDE.md` と `~/.codex/AGENTS.md`                |
+| `shared/CLAUDE.md`               | `~/.claude/CLAUDE.md`                                        |
+| `shared/AGENTS.md`               | `~/.claude/AGENTS.md` と `~/.codex/AGENTS.md`                |
 | `shared/skills/`                 | `~/.claude/skills/` と `~/.agents/skills/`                   |
 | `ghostty/config`                 | `~/Library/Application Support/com.mitchellh.ghostty/config` |
 | `vscode/settings.json`           | `~/Library/Application Support/Code/User/settings.json`      |
@@ -74,7 +75,8 @@ dotfiles/
 │       ├── statusline.sh
 │       └── commands/
 ├── shared/                  # Claude Code / Codex 共有の AI エージェント資産（1 実体を複数箇所へ配布）
-│   ├── AGENTS.md            # 共通グローバル指示（~/.claude/CLAUDE.md と ~/.codex/AGENTS.md の実体）
+│   ├── AGENTS.md            # 共通グローバル指示（~/.claude/AGENTS.md と ~/.codex/AGENTS.md の実体）
+│   ├── CLAUDE.md            # ~/.claude/CLAUDE.md の実体。AGENTS.md を @import するだけ
 │   └── skills/              # Agent Skills 標準（SKILL.md）のスキル群
 ├── claude/                  # Claude Code 関連の repo ツール（$HOME には配置しない）
 │   ├── setup-mcp.sh         # MCP サーバー登録スクリプト

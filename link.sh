@@ -83,7 +83,8 @@ chmod +x "$HOME_MIRROR/.claude/statusline.sh"
 
 # --- 例外1: 1つの実体を複数箇所へ別名で配る共有アセット（ミラーは1対1前提のため表現不可）---
 # skills は Agent Skills 標準（SKILL.md）なので Claude Code / Codex から同じ実体を参照する。
-link "$DOTFILES_DIR/shared/AGENTS.md"      "$HOME/.claude/CLAUDE.md"
+link "$DOTFILES_DIR/shared/CLAUDE.md"      "$HOME/.claude/CLAUDE.md"
+link "$DOTFILES_DIR/shared/AGENTS.md"      "$HOME/.claude/AGENTS.md"
 link "$DOTFILES_DIR/shared/AGENTS.md"      "$HOME/.codex/AGENTS.md"
 link "$DOTFILES_DIR/shared/skills"         "$HOME/.claude/skills"
 link "$DOTFILES_DIR/shared/skills"         "$HOME/.agents/skills"
