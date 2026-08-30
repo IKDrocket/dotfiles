@@ -22,6 +22,7 @@ brew "jq"
 brew "tree"
 brew "ghostscript"
 brew "fd"
+brew "peco"
 
 # ──────────────────────────────────────────
 # Git
@@ -48,6 +49,8 @@ brew "hadolint"       # Dockerfile linter
 brew "aquasecurity/trivy/trivy"  # コンテナ脆弱性スキャン
 brew "agent-browser"
 brew "playwright-cli"
+brew "golang-migrate"
+brew "direnv"
 
 # ──────────────────────────────────────────
 # デスクトップアプリケーションの管理
@@ -62,7 +65,7 @@ cask "figma"
 cask "fuwari"
 cask "amical"
 cask "appcleaner"
-cask "bettertouchtool"
+# cask "bettertouchtool" # brew でのインストールは非推奨のため、手動でインストールする
 cask "claude-code"
 cask "google-drive"
 cask "google-japanese-ime"

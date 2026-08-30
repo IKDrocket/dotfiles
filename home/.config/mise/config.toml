@@ -1,5 +1,5 @@
 [tools]
-aws-cli = "2.22.12"
+aws-cli = { version = "2.36.24", symlink_bins = "true" }
 go = "1"
 node = "24"
 python = "3.13"

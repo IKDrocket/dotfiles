@@ -185,15 +185,15 @@
     "https://biomejs.dev": true,
   },
   "github.copilot.chat.commitMessageGeneration.instructions": [
-    {
-      "text": "必ず日本語で記述してください",
-    },
-    {
-      "text": "コミットメッセージは、最初にConventional Commitsに則って記述してください",
-    },
-    {
-      "text": "その後ファイルごとの詳細な変更内容を記述してください",
-    },
+    // {
+    //   "text": "必ず日本語で記述してください",
+    // },
+    // {
+    //   "text": "コミットメッセージは、最初にConventional Commitsに則って記述してください",
+    // },
+    // {
+    //   "text": "その後ファイルごとの詳細な変更内容を記述してください",
+    // },
   ],
   "todo-tree.ripgrep.ripgrep": "/opt/homebrew/bin/rg",
   "todo-tree.general.tags": [

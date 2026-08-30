@@ -31,6 +31,15 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search    # ↑ 入力中の文字列で履歴を絞り込む
 bindkey "^[[B" down-line-or-beginning-search  # ↓
 
+# Ctrl+R で peco を使ったヒストリ検索
+function peco-history-selection() {
+  BUFFER=$(fc -l -n 1 | tail -r | awk '!seen[$0]++' | peco --query "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle reset-prompt
+}
+zle -N peco-history-selection
+bindkey "^R" peco-history-selection  # Ctrl+R でヒストリを peco で検索
+
 # ──────────────────────────────────────────
 # プラグイン
 # ──────────────────────────────────────────
@@ -50,6 +59,8 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 eval "$(mise activate zsh)"
 eval "$(starship init zsh)"
+
+eval "$(direnv hook zsh)"
 
 # ──────────────────────────────────────────
 # エイリアス
