@@ -38,7 +38,6 @@
 # 外部リポジトリ由来の skills（skills-manifest.txt で管理）は許可しない。
 /shared/skills/*
 !/shared/skills/architecture-design/
-!/shared/skills/career-change/
 !/shared/skills/commit-pr/
 !/shared/skills/debugging/
 !/shared/skills/development-guidelines/
