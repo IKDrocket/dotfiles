@@ -1,17 +1,24 @@
 [
-  // 1. エクスプローラーにいる時 ➔ エディターへ移動
+  // 1. エクスプローラーにいる時 ➔ 一番左のエディターグループへ移動
   {
     "key": "cmd+e",
-    "command": "workbench.action.focusActiveEditorGroup",
+    "command": "workbench.action.focusFirstEditorGroup",
     "when": "sideBarFocus && activeViewlet == 'workbench.view.explorer'",
   },
-  // 2. エディターにいる時 ➔ ターミナルへ移動
+  // 2. エディター（Claude などの webview タブ含む）にいる時 ➔ 右隣のエディターグループへ移動
+  //    editorTextFocus だと webview タブで効かないため、サイドバー/パネル/ターミナル以外を条件にする
+  {
+    "key": "cmd+e",
+    "command": "workbench.action.focusNextGroup",
+    "when": "!sideBarFocus && !panelFocus && !terminalFocus && !activeEditorGroupLast",
+  },
+  // 3. 一番右のエディターグループにいる時 ➔ ターミナルへ移動
   {
     "key": "cmd+e",
     "command": "workbench.action.terminal.focus",
-    "when": "editorTextFocus",
+    "when": "!sideBarFocus && !panelFocus && !terminalFocus && activeEditorGroupLast",
   },
-  // 3. ターミナルにいる時 ➔ エクスプローラーへ移動
+  // 4. ターミナルにいる時 ➔ エクスプローラーへ移動
   {
     "key": "cmd+e",
     "command": "workbench.view.explorer",
