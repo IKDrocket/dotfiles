@@ -1,1 +1,20 @@
-[]
+[
+  // 1. エクスプローラーにいる時 ➔ エディターへ移動
+  {
+    "key": "cmd+e",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "sideBarFocus && activeViewlet == 'workbench.view.explorer'",
+  },
+  // 2. エディターにいる時 ➔ ターミナルへ移動
+  {
+    "key": "cmd+e",
+    "command": "workbench.action.terminal.focus",
+    "when": "editorTextFocus",
+  },
+  // 3. ターミナルにいる時 ➔ エクスプローラーへ移動
+  {
+    "key": "cmd+e",
+    "command": "workbench.view.explorer",
+    "when": "terminalFocus",
+  },
+]
