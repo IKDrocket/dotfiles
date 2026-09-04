@@ -71,6 +71,7 @@ link_home() {
 # --- $HOME ミラー（home/ 配下 = ~ の実配置と同形）---
 link_home ".zshrc"
 link_home ".gitconfig"
+link_home ".config/gh-dash/config.yml"
 link_home ".vimrc"
 link_home ".config/mise/config.toml"
 link_home ".config/starship.toml"
@@ -114,6 +115,7 @@ is_linked_dest() {
 SCAN_DIRS=(
   "$HOME"
   "$HOME/.config"
+  "$HOME/.config/gh-dash"
   "$HOME/.config/mise"
   "$HOME/.config/zellij"
   "$HOME/Library/Application Support/com.mitchellh.ghostty"

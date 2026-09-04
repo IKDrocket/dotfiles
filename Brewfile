@@ -51,6 +51,8 @@ brew "agent-browser"
 brew "playwright-cli"
 brew "golang-migrate"
 brew "direnv"
+brew "gh-dash"
+brew "diffnav"
 
 # ──────────────────────────────────────────
 # デスクトップアプリケーションの管理
