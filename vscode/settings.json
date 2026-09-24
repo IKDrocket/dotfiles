@@ -102,6 +102,7 @@
     "scminput": false,
     "yaml": true,
     "typescriptreact": true,
+    "terraform": false,
   },
   "editor.suggest.showMethods": true,
   "editor.suggest.preview": true,
@@ -183,6 +184,17 @@
     "https://json.schemastore.org/": true,
     "https://json-schema.org/": true,
     "https://biomejs.dev": true,
+  },
+  "terraform.languageServer.enable": true,
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
+  },
+  "[terraform-vars]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
   },
   "github.copilot.chat.commitMessageGeneration.instructions": [
     // {
