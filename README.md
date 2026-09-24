@@ -23,6 +23,17 @@ cp home/.zshrc.local.sample home/.zshrc.local
 5. **Claude Code MCP サーバー** の登録（claude/setup-mcp.sh 実行）
 6. **VS Code 拡張機能** の一括インストール
 
+初回以降に一部だけやり直すときは、次を単体で実行します。
+
+```bash
+./brew.sh private                  # Brewfile の再インストール（引数は private か work）
+./link.sh                          # シンボリックリンク（dry-run）
+./link.sh --apply
+./claude/setup-mcp.sh              # Claude Code MCP の再登録
+./claude/sync-skills.sh            # 外部スキルの再取得
+./vscode/install-extensions.sh     # VS Code 拡張機能の再インストール
+```
+
 ### シンボリックリンクの再作成（メンテナンス時）
 
 `link.sh` はデフォルトで **dry-run**（実行予定の操作を表示するだけで何も変更しない）。削除対象を確認してから反映できます。
@@ -63,8 +74,9 @@ cp home/.zshrc.local.sample home/.zshrc.local
 
 ```
 dotfiles/
-├── setup.sh               # セットアップスクリプト（メインエントリポイント）
+├── setup.sh                 # セットアップスクリプト（メインエントリポイント）
 ├── link.sh                  # シンボリックリンク作成スクリプト
+├── brew.sh                  # Brewfile のインストール
 ├── Brewfile                 # Homebrew 共通パッケージ
 ├── Brewfile.private         # プライベート環境だけのパッケージ
 ├── Brewfile.work            # 仕事環境だけのパッケージ
@@ -101,7 +113,8 @@ dotfiles/
 └── vscode/
     ├── settings.json
     ├── keybindings.json
-    └── extensions.txt
+    ├── extensions.txt
+    └── install-extensions.sh  # VS Code 拡張機能の一括インストール
 ```
 
 ## 除外ファイル（機密情報）

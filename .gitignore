@@ -12,6 +12,7 @@
 !/README.md
 !/setup.sh
 !/link.sh
+!/brew.sh
 
 # --- 追跡するディレクトリ ---
 # home/ は $HOME のミラー（配下は自動追跡）。それ以外は例外アセット・repo ツール。

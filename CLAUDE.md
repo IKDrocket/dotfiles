@@ -5,7 +5,7 @@ Think in English, interact with the user in Japanese.
 
 ## Overview
 
-新しい Mac での開発環境を素早く再現するための dotfiles リポジトリ。シンボリックリンクで設定ファイルを管理し、`setup.sh` が唯一のエントリポイント。
+新しい Mac での開発環境を素早く再現するための dotfiles リポジトリ。シンボリックリンクで設定ファイルを管理し、全工程の入口は `setup.sh`。再実行したい工程は単体スクリプトに切り出してある。
 
 ## Setup
 
@@ -19,6 +19,12 @@ cp home/.zshrc.local.sample home/.zshrc.local
 # シンボリックリンクのみ再作成（dotfiles メンテナンス時）
 ./link.sh           # デフォルトは dry-run（実行予定の操作を表示するだけ）
 ./link.sh --apply   # 実際に反映する
+
+# 一部だけ再実行
+./brew.sh private                  # Brewfile（引数は private か work）
+./claude/setup-mcp.sh
+./claude/sync-skills.sh
+./vscode/install-extensions.sh
 ```
 
 `link.sh` はデフォルトで dry-run。削除・退避・リンク作成の予定を表示するだけで何も変更しない。実際に反映するには `--apply` を渡す（`setup.sh` は `--apply` 付きで呼ぶ）。
