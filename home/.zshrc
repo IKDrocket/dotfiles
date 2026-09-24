@@ -56,6 +56,7 @@ fi
 # ──────────────────────────────────────────
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export TENV_AUTO_INSTALL=true
 
 eval "$(mise activate zsh)"
 eval "$(starship init zsh)"
