@@ -53,6 +53,8 @@ brew "golang-migrate"
 brew "direnv"
 brew "gh-dash"
 brew "diffnav"
+brew "session-manager-plugin"
+brew "kayac/tap/ecspresso"
 
 # ──────────────────────────────────────────
 # デスクトップアプリケーションの管理
