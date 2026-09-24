@@ -11,7 +11,10 @@ Think in English, interact with the user in Japanese.
 
 ```bash
 # 新規 Mac セットアップ（全工程）
-./install.sh
+# 先に見本をコピーする。無いと install.sh はエラーで止まる。
+# 引数は private か work。zsh の選択は .zshrc.local の source。
+cp home/.zshrc.local.sample home/.zshrc.local
+./install.sh private
 
 # シンボリックリンクのみ再作成（dotfiles メンテナンス時）
 ./link.sh           # デフォルトは dry-run（実行予定の操作を表示するだけ）
@@ -23,7 +26,7 @@ Think in English, interact with the user in Japanese.
 このスクリプトは以下を順番に実行する:
 
 1. Xcode CLI ツールと Rosetta（Apple Silicon）のインストール
-2. Homebrew と `Brewfile` 記載のパッケージを一括インストール
+2. Homebrew と `Brewfile`（共通）に加え、引数 `private` または `work` に対応する Brewfile をインストール
 3. `mise` で開発ランタイムをインストール
 4. リポジトリ内のファイルをシンボリックリンクで配置
 5. `vscode/extensions.txt` から VS Code 拡張機能を一括インストール
@@ -38,6 +41,8 @@ Think in English, interact with the user in Japanese.
 | Source | Symlink target |
 |---|---|
 | `home/.zshrc` | `~/.zshrc` |
+| `home/.zshrc.local` | `~/.zshrc.local`（gitignore） |
+| `home/.zshrc.local.sample` | `~/.zshrc.local.sample` |
 | `home/.config/zsh/private.zsh` | `~/.config/zsh/private.zsh` |
 | `home/.config/zsh/work.zsh` | `~/.config/zsh/work.zsh` |
 | `home/.gitconfig` | `~/.gitconfig` |
@@ -59,7 +64,7 @@ Think in English, interact with the user in Japanese.
 ## Key Files
 
 - **`home/`** — `$HOME` のミラー。配下のファイルは同じ相対パスで `~` にリンクされる。
-- **`Brewfile`** — Homebrew パッケージ・cask の一覧。新しいツールはここに追加する。
+- **`Brewfile`** — Homebrew の共通パッケージ。環境差分は `Brewfile.private` か `Brewfile.work`。どちらを入れるかは `./install.sh private` または `./install.sh work`。zsh の選択は `~/.zshrc.local` が `private.zsh` か `work.zsh` を source する。
 - **`home/.config/mise/config.toml`** — ランタイムバージョン管理（Node 24 / Python 3.13 / Go 1 / AWS CLI 2.22.12）。
 - **`home/.config/nvim/`** — lazy.nvim を使った Neovim 設定。エントリポイントは `init.lua`、プラグインは `lua/plugins/init.lua`、オプションは `lua/options.lua`、キーマップは `lua/keymaps.lua`。
 - **`shared/`** — Claude Code / Codex 共有の AI エージェント資産。`AGENTS.md`（共通グローバル指示）と `skills/`（Agent Skills 標準の SKILL.md 群）。両ツールのグローバルパスに同じ実体をリンクする（1 実体 → 複数箇所なので `home/` ミラーではなく例外扱い）。Claude Code は `AGENTS.md` を読まないため、`CLAUDE.md`（`@~/.claude/AGENTS.md` を import するだけの薄いファイル）を経由させる。

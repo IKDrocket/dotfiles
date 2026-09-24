@@ -1,17 +1,4 @@
 # ──────────────────────────────────────────
-# Taps
-# ──────────────────────────────────────────
-tap "aquasecurity/trivy"
-
-# ──────────────────────────────────────────
-# シェル
-# ──────────────────────────────────────────
-brew "zsh-autosuggestions"
-brew "zsh-completions"
-brew "zsh-syntax-highlighting"
-brew "starship"
-
-# ──────────────────────────────────────────
 # CLI ユーティリティ
 # ──────────────────────────────────────────
 brew "curl"
@@ -20,9 +7,8 @@ brew "gawk"
 brew "gnu-time"
 brew "jq"
 brew "tree"
-brew "ghostscript"
-brew "fd"
 brew "peco"
+brew "fd"
 
 # ──────────────────────────────────────────
 # Git
@@ -46,15 +32,9 @@ brew "plantuml"
 brew "graphviz"        # Graphviz ダイアグラム生成
 brew "plantuml"       # PlantUML ダイアグラム生成
 brew "hadolint"       # Dockerfile linter
-brew "aquasecurity/trivy/trivy"  # コンテナ脆弱性スキャン
 brew "agent-browser"
 brew "playwright-cli"
-brew "golang-migrate"
-brew "direnv"
 brew "gh-dash"
-brew "diffnav"
-brew "session-manager-plugin"
-brew "kayac/tap/ecspresso"
 
 # ──────────────────────────────────────────
 # デスクトップアプリケーションの管理
@@ -77,5 +57,4 @@ cask "istat-menus"
 cask "meetingbar"
 cask "monitorcontrol"
 cask "raycast"
-cask "obsidian"
 cask "betterdisplay"

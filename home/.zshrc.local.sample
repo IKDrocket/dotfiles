@@ -1,0 +1,9 @@
+# マシンごとの差分。実ファイルは home/.zshrc.local。install.sh の前にこの見本をコピーする。git 管理しない。
+# シェル環境は private.zsh か work.zsh のどちらか一方を読む。両方で使うものは .zshrc に書く。
+# パッケージの選択は ./install.sh private または ./install.sh work。
+
+# source "$HOME/.config/zsh/private.zsh"
+# source "$HOME/.config/zsh/work.zsh"
+
+# alias awsstg='export ENV=stg && export AWS_ACCOUNT_ID=000000000000 && export AWS_PROFILE=example-stg'
+# alias awsprd='export ENV=prd && export AWS_ACCOUNT_ID=000000000000 && export AWS_PROFILE=example-prd'

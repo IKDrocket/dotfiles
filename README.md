@@ -4,16 +4,20 @@
 
 ## セットアップ
 
+見本をコピーしてから `install.sh` を実行します。どちらかが無いと `install.sh` はエラーで止まります。
+
 ```bash
 git clone https://github.com/ikdrocket/dotfiles.git ~/dotfiles
 cd ~/dotfiles
-./install.sh
+cp home/.zshrc.local.sample home/.zshrc.local
+# .zshrc.local で読む zsh 断片を選んでから。引数は private か work。
+./install.sh private
 ```
 
 `install.sh` を実行すると以下が自動で行われます:
 
 1. **Xcode CLI ツール** と **Rosetta**（Apple Silicon）のインストール
-2. **Homebrew** のインストール（未インストール時）と Brewfile パッケージの一括インストール
+2. **Homebrew** のインストール（未インストール時）と Brewfile の一括インストール。共通の `Brewfile` に加え、引数に応じて `Brewfile.private` か `Brewfile.work` を 1 つ入れる
 3. **mise** による開発ランタイムのインストール
 4. **シンボリックリンク** の作成（link.sh 実行）
 5. **Claude Code MCP サーバー** の登録（claude/setup-mcp.sh 実行）
@@ -35,6 +39,8 @@ cd ~/dotfiles
 | dotfiles パス                    | リンク先                                                     |
 | -------------------------------- | ------------------------------------------------------------ |
 | `home/.zshrc`                    | `~/.zshrc`                                                   |
+| `home/.zshrc.local`              | `~/.zshrc.local`（gitignore）                                |
+| `home/.zshrc.local.sample`       | `~/.zshrc.local.sample`                                      |
 | `home/.config/zsh/private.zsh`   | `~/.config/zsh/private.zsh`                                  |
 | `home/.config/zsh/work.zsh`      | `~/.config/zsh/work.zsh`                                     |
 | `home/.gitconfig`                | `~/.gitconfig`                                               |
@@ -59,16 +65,19 @@ cd ~/dotfiles
 dotfiles/
 ├── install.sh               # セットアップスクリプト（メインエントリポイント）
 ├── link.sh                  # シンボリックリンク作成スクリプト
-├── Brewfile                 # Homebrew パッケージリスト
+├── Brewfile                 # Homebrew 共通パッケージ
+├── Brewfile.private         # プライベート環境だけのパッケージ
+├── Brewfile.work            # 仕事環境だけのパッケージ
 ├── .gitignore
 ├── README.md
 ├── CLAUDE.md
 ├── home/                    # $HOME のミラー（配下がそのまま ~ に配置される）
 │   ├── .zshrc
+│   ├── .zshrc.local.sample # ~/.zshrc.local の見本（実体は git 管理外）
 │   ├── .gitconfig
 │   ├── .vimrc
 │   ├── .config/
-│   │   ├── zsh/             # private.zsh / work.zsh（秘密は ~/.zshrc.local）
+│   │   ├── zsh/             # private.zsh / work.zsh（~/.zshrc.local から読む）
 │   │   ├── mise/config.toml
 │   │   ├── starship.toml
 │   │   ├── nvim/            # lazy.nvim ベースの Neovim 設定
@@ -102,8 +111,7 @@ dotfiles/
 - `~/.npmrc` — npm 認証トークン
 - `~/.ssh/` — SSH 秘密鍵
 - `~/.aws/credentials` — AWS 認証情報
-- `~/.zshrc.local` — マシンごとのシェル差分（アカウント ID など）
-- `~/.config/zsh/profile` — `work` または `private` の 1 語。無い場合は `private`
+- `home/.zshrc.local` — マシンごとのシェル差分。読む zsh 断片とアカウント ID を書く。`~/.zshrc.local` へリンクする。見本は `home/.zshrc.local.sample`
 
 ## シンボリックリンクの確認
 

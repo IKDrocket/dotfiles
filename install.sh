@@ -3,7 +3,26 @@ set -e
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-echo "==> Starting dotfiles setup from: $DOTFILES_DIR"
+case "${1:-}" in
+  private|work) ENV_NAME="$1" ;;
+  *)
+    echo "Usage: $0 private|work" >&2
+    exit 1
+    ;;
+esac
+
+echo "==> Starting dotfiles setup from: $DOTFILES_DIR ($ENV_NAME)"
+
+require_file() {
+  local path="$1"
+  local sample="$2"
+  if [[ ! -f "$path" ]]; then
+    echo "error: $path がありません。" >&2
+    echo "  cp \"$sample\" \"$path\" を実行してから、install.sh を再実行してください。" >&2
+    exit 1
+  fi
+}
+require_file "$DOTFILES_DIR/home/.zshrc.local" "$DOTFILES_DIR/home/.zshrc.local.sample"
 
 # ──────────────────────────────────────────
 # 1. Xcode Command Line Tools のインストール
@@ -40,6 +59,9 @@ brew update
 
 echo "==> Installing packages from Brewfile..."
 brew bundle install --file="$DOTFILES_DIR/Brewfile" || echo "==> Some packages failed (may already be installed). Continuing..."
+
+echo "==> Installing packages from Brewfile.$ENV_NAME..."
+brew bundle install --file="$DOTFILES_DIR/Brewfile.$ENV_NAME" || echo "==> Some packages in Brewfile.$ENV_NAME failed. Continuing..."
 
 echo "==> Cleaning up Homebrew cache..."
 brew cleanup

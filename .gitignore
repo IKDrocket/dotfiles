@@ -6,6 +6,8 @@
 # --- 追跡するファイル ---
 !/.gitignore
 !/Brewfile
+!/Brewfile.private
+!/Brewfile.work
 !/CLAUDE.md
 !/README.md
 !/install.sh
@@ -70,6 +72,6 @@
 *.pem
 *.key
 
-# マシンローカルの zsh 差分。home/ に誤って置いても追跡しない。
+# マシンローカル。home/ に置き link.sh で ~ へリンクするが、追跡しない。
 /home/.zshrc.local
 /home/.config/zsh/profile

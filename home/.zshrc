@@ -88,14 +88,9 @@ alias tui='tftui'
 # ──────────────────────────────────────────
 # 環境ごとの差分
 # ──────────────────────────────────────────
-# ~/.config/zsh/profile に work または private と 1 語書く（ファイルが無ければ private）。
-# アカウント ID やトークンは ~/.zshrc.local に書き、リポジトリには置かない。
-profile="private"
-[[ -f "$HOME/.config/zsh/profile" ]] && profile="$(<"$HOME/.config/zsh/profile")"
-case "$profile" in
-  work|private)
-    [[ -f "$HOME/.config/zsh/${profile}.zsh" ]] && source "$HOME/.config/zsh/${profile}.zsh"
-    ;;
-esac
-
-[[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
+# どの zsh 断片を読むか、秘密は ~/.zshrc.local に書く。見本は ~/.zshrc.local.sample。
+if [[ ! -f "$HOME/.zshrc.local" ]]; then
+  echo "error: $HOME/.zshrc.local がありません。home/.zshrc.local.sample を home/.zshrc.local にコピーしてください。" >&2
+  return 1
+fi
+source "$HOME/.zshrc.local"

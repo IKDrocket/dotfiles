@@ -36,6 +36,11 @@ link() {
   local dest_dir
   dest_dir="$(dirname "$dest")"
 
+  if [[ ! -e "$src" ]]; then
+    echo "error: リンク元がありません: $src" >&2
+    exit 1
+  fi
+
   run mkdir -p "$dest_dir"
 
   # 既存リンクは有効/壊れ問わず先に除去してから貼り直す。
@@ -70,6 +75,8 @@ link_home() {
 
 # --- $HOME ミラー（home/ 配下 = ~ の実配置と同形）---
 link_home ".zshrc"
+link_home ".zshrc.local"
+link_home ".zshrc.local.sample"
 link_home ".gitconfig"
 link_home ".config/gh-dash/config.yml"
 link_home ".vimrc"
@@ -119,6 +126,7 @@ SCAN_DIRS=(
   "$HOME/.config"
   "$HOME/.config/gh-dash"
   "$HOME/.config/zsh"
+  "$HOME/.config/dotfiles"
   "$HOME/.config/mise"
   "$HOME/.config/zellij"
   "$HOME/Library/Application Support/com.mitchellh.ghostty"
