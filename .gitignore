@@ -26,11 +26,6 @@
 # --- home/.claude/commands はコマンドごとにホワイトリスト指定 ---
 # 自作コマンドを追加したらここに1行追加する。
 /home/.claude/commands/*
-!/home/.claude/commands/new-feature.md
-!/home/.claude/commands/review-docs.md
-!/home/.claude/commands/setup-project.md
-!/home/.claude/commands/frontend-upgrade-research.md
-!/home/.claude/commands/frontend-upgrade-run.md
 
 # --- claude/agents はエージェントごとにホワイトリスト指定 ---
 # 自作エージェントを追加したらここに1行追加する。
@@ -40,29 +35,9 @@
 # 自作スキルを追加したらここに1行追加する。
 # 外部リポジトリ由来の skills（skills-manifest.txt で管理）は許可しない。
 /shared/skills/*
-!/shared/skills/architecture-design/
 !/shared/skills/commit-pr/
-!/shared/skills/debugging/
-!/shared/skills/development-guidelines/
 !/shared/skills/empirical-prompt-tuning/
-!/shared/skills/functional-design/
-!/shared/skills/glossary-creation/
-!/shared/skills/prd-writing/
-!/shared/skills/repository-structure/
 !/shared/skills/steering/
-!/shared/skills/task-flow/
-!/shared/skills/browser-debug/
-!/shared/skills/browser-e2e/
-!/shared/skills/browser-perf/
-!/shared/skills/browser-verify/
-!/shared/skills/browser-tool-select/
-!/shared/skills/frontend-lib-survey/
-!/shared/skills/frontend-lib-usage/
-!/shared/skills/frontend-migration-plan/
-!/shared/skills/frontend-safety-net-check/
-!/shared/skills/frontend-upgrade-execute/
-!/shared/skills/frontend-upgrade-release-check/
-!/shared/skills/frontend-upgrade-verify/
 
 
 # --- 許可したディレクトリ内でも除外するもの ---
