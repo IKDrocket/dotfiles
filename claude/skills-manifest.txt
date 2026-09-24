@@ -10,5 +10,6 @@
 #   mizchi/chezmoi-dotfiles empirical-prompt-tuning dot_claude/skills
 #
 # 標準リポジトリ
-anthropics/skills frontend-design
-vercel-labs/agent-skills react-best-practices
+coji/natural-japanese natural-japanese@v1.5.0
+#anthropics/skills frontend-design
+#vercel-labs/agent-skills react-best-practices
