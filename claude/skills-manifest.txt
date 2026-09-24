@@ -7,7 +7,6 @@
 #
 # 例:
 #   anthropics/claude-code-skills git-commit@v1.0.0
-#   mizchi/chezmoi-dotfiles empirical-prompt-tuning dot_claude/skills
 #
 # 標準リポジトリ
 coji/natural-japanese natural-japanese@v1.5.0

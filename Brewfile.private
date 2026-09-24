@@ -9,10 +9,6 @@ tap "aquasecurity/trivy"
 # ──────────────────────────────────────────
 # シェル
 # ──────────────────────────────────────────
-brew "zsh-autosuggestions"
-brew "zsh-completions"
-brew "zsh-syntax-highlighting"
-brew "starship"
 
 # ──────────────────────────────────────────
 # CLI ユーティリティ
