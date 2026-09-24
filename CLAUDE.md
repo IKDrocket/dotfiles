@@ -38,6 +38,8 @@ Think in English, interact with the user in Japanese.
 | Source | Symlink target |
 |---|---|
 | `home/.zshrc` | `~/.zshrc` |
+| `home/.config/zsh/private.zsh` | `~/.config/zsh/private.zsh` |
+| `home/.config/zsh/work.zsh` | `~/.config/zsh/work.zsh` |
 | `home/.gitconfig` | `~/.gitconfig` |
 | `home/.vimrc` | `~/.vimrc` |
 | `home/.config/mise/config.toml` | `~/.config/mise/config.toml` |

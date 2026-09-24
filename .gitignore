@@ -69,3 +69,7 @@
 *secret*
 *.pem
 *.key
+
+# マシンローカルの zsh 差分。home/ に誤って置いても追跡しない。
+/home/.zshrc.local
+/home/.config/zsh/profile

@@ -71,3 +71,30 @@ alias view="nvim -R"
 alias zshconfig="vim ~/.zshrc"
 alias dotfile="vim ~/dotfiles"
 alias zshreload="source ~/.zshrc"
+
+alias t='terraform'
+alias tf='terraform fmt --recursive'
+alias ti='terraform import'
+alias tin='terraform init'
+alias tss='terraform state show'
+alias tsl='terraform state list'
+alias tsrm='terraform state rm'
+alias tp='terraform plan'
+alias ta='terraform apply'
+alias tsmv='terraform state mv'
+alias tui='tftui'
+
+# ──────────────────────────────────────────
+# 環境ごとの差分
+# ──────────────────────────────────────────
+# ~/.config/zsh/profile に work または private と 1 語書く（ファイルが無ければ private）。
+# アカウント ID やトークンは ~/.zshrc.local に書き、リポジトリには置かない。
+profile="private"
+[[ -f "$HOME/.config/zsh/profile" ]] && profile="$(<"$HOME/.config/zsh/profile")"
+case "$profile" in
+  work|private)
+    [[ -f "$HOME/.config/zsh/${profile}.zsh" ]] && source "$HOME/.config/zsh/${profile}.zsh"
+    ;;
+esac
+
+[[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"

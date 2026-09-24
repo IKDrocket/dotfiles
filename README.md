@@ -35,6 +35,8 @@ cd ~/dotfiles
 | dotfiles パス                    | リンク先                                                     |
 | -------------------------------- | ------------------------------------------------------------ |
 | `home/.zshrc`                    | `~/.zshrc`                                                   |
+| `home/.config/zsh/private.zsh`   | `~/.config/zsh/private.zsh`                                  |
+| `home/.config/zsh/work.zsh`      | `~/.config/zsh/work.zsh`                                     |
 | `home/.gitconfig`                | `~/.gitconfig`                                               |
 | `home/.vimrc`                    | `~/.vimrc`                                                   |
 | `home/.config/mise/config.toml`  | `~/.config/mise/config.toml`                                 |
@@ -66,6 +68,7 @@ dotfiles/
 │   ├── .gitconfig
 │   ├── .vimrc
 │   ├── .config/
+│   │   ├── zsh/             # private.zsh / work.zsh（秘密は ~/.zshrc.local）
 │   │   ├── mise/config.toml
 │   │   ├── starship.toml
 │   │   ├── nvim/            # lazy.nvim ベースの Neovim 設定
@@ -99,6 +102,8 @@ dotfiles/
 - `~/.npmrc` — npm 認証トークン
 - `~/.ssh/` — SSH 秘密鍵
 - `~/.aws/credentials` — AWS 認証情報
+- `~/.zshrc.local` — マシンごとのシェル差分（アカウント ID など）
+- `~/.config/zsh/profile` — `work` または `private` の 1 語。無い場合は `private`
 
 ## シンボリックリンクの確認
 
