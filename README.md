@@ -4,13 +4,15 @@
 
 ## セットアップ
 
-見本をコピーしてから `setup.sh` を実行します。どちらかが無いと `setup.sh` はエラーで止まります。
+見本をコピーしてから `setup.sh` を実行します。見本のコピーが無いと `setup.sh` はエラーで止まります。
 
 ```bash
 git clone https://github.com/ikdrocket/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 cp home/.zshrc.local.sample home/.zshrc.local
-# .zshrc.local で読む zsh 断片を選んでから。引数は private か work。
+cp home/.gitconfig.sample home/.gitconfig
+# .zshrc.local で読む zsh 断片を選び、.gitconfig に自分の名前とメールを書いてから。
+# 引数は private か work。
 ./setup.sh private
 ```
 
@@ -54,7 +56,8 @@ cp home/.zshrc.local.sample home/.zshrc.local
 | `home/.zshrc.local.sample`       | `~/.zshrc.local.sample`                                      |
 | `home/.config/zsh/private.zsh`   | `~/.config/zsh/private.zsh`                                  |
 | `home/.config/zsh/work.zsh`      | `~/.config/zsh/work.zsh`                                     |
-| `home/.gitconfig`                | `~/.gitconfig`                                               |
+| `home/.gitconfig`                | `~/.gitconfig`（gitignore）                                  |
+| `home/.gitconfig.sample`         | `~/.gitconfig.sample`                                        |
 | `home/.vimrc`                    | `~/.vimrc`                                                   |
 | `home/.config/mise/config.toml`  | `~/.config/mise/config.toml`                                 |
 | `home/.config/starship.toml`     | `~/.config/starship.toml`                                    |
@@ -86,7 +89,7 @@ dotfiles/
 ├── home/                    # $HOME のミラー（配下がそのまま ~ に配置される）
 │   ├── .zshrc
 │   ├── .zshrc.local.sample # ~/.zshrc.local の見本（実体は git 管理外）
-│   ├── .gitconfig
+│   ├── .gitconfig.sample  # ~/.gitconfig の見本（実体は git 管理外）
 │   ├── .vimrc
 │   ├── .config/
 │   │   ├── zsh/             # private.zsh / work.zsh（~/.zshrc.local から読む）
@@ -125,6 +128,7 @@ dotfiles/
 - `~/.ssh/` — SSH 秘密鍵
 - `~/.aws/credentials` — AWS 認証情報
 - `home/.zshrc.local` — マシンごとのシェル差分。読む zsh 断片とアカウント ID を書く。`~/.zshrc.local` へリンクする。見本は `home/.zshrc.local.sample`
+- `home/.gitconfig` — マシンごとの Git ユーザー。`~/.gitconfig` へリンクする。見本は `home/.gitconfig.sample`
 
 ## シンボリックリンクの確認
 

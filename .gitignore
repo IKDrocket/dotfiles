@@ -75,4 +75,5 @@
 
 # マシンローカル。home/ に置き link.sh で ~ へリンクするが、追跡しない。
 /home/.zshrc.local
+/home/.gitconfig
 /home/.config/zsh/profile

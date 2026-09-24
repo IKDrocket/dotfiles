@@ -1,0 +1,4 @@
+# マシンごとの Git ユーザー。実ファイルは home/.gitconfig。setup.sh の前にこの見本をコピーする。git 管理しない。
+[user]
+	name = Your Name
+	email = you@example.com

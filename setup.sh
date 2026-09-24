@@ -23,6 +23,7 @@ require_file() {
   fi
 }
 require_file "$DOTFILES_DIR/home/.zshrc.local" "$DOTFILES_DIR/home/.zshrc.local.sample"
+require_file "$DOTFILES_DIR/home/.gitconfig" "$DOTFILES_DIR/home/.gitconfig.sample"
 
 # ──────────────────────────────────────────
 # 1. Xcode Command Line Tools のインストール

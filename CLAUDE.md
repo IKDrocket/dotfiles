@@ -14,6 +14,7 @@ Think in English, interact with the user in Japanese.
 # 先に見本をコピーする。無いと setup.sh はエラーで止まる。
 # 引数は private か work。zsh の選択は .zshrc.local の source。
 cp home/.zshrc.local.sample home/.zshrc.local
+cp home/.gitconfig.sample home/.gitconfig
 ./setup.sh private
 
 # シンボリックリンクのみ再作成（dotfiles メンテナンス時）
@@ -51,7 +52,8 @@ cp home/.zshrc.local.sample home/.zshrc.local
 | `home/.zshrc.local.sample` | `~/.zshrc.local.sample` |
 | `home/.config/zsh/private.zsh` | `~/.config/zsh/private.zsh` |
 | `home/.config/zsh/work.zsh` | `~/.config/zsh/work.zsh` |
-| `home/.gitconfig` | `~/.gitconfig` |
+| `home/.gitconfig` | `~/.gitconfig`（gitignore） |
+| `home/.gitconfig.sample` | `~/.gitconfig.sample` |
 | `home/.vimrc` | `~/.vimrc` |
 | `home/.config/mise/config.toml` | `~/.config/mise/config.toml` |
 | `home/.config/starship.toml` | `~/.config/starship.toml` |
