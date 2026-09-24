@@ -1,2 +1,2 @@
 # 仕事環境だけでインストールする Homebrew パッケージ。
-# 共通分は Brewfile。このファイルは ./install.sh work のとき入れる。
+# 共通分は Brewfile。このファイルは ./setup.sh work のとき入れる。

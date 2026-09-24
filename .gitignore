@@ -10,7 +10,7 @@
 !/Brewfile.work
 !/CLAUDE.md
 !/README.md
-!/install.sh
+!/setup.sh
 !/link.sh
 
 # --- 追跡するディレクトリ ---

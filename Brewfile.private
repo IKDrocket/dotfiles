@@ -1,5 +1,5 @@
 # プライベート環境だけでインストールする Homebrew パッケージ。
-# 共通分は Brewfile。このファイルは ./install.sh private のとき入れる。
+# 共通分は Brewfile。このファイルは ./setup.sh private のとき入れる。
 
 # ──────────────────────────────────────────
 # Taps

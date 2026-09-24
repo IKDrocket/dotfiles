@@ -5,23 +5,23 @@ Think in English, interact with the user in Japanese.
 
 ## Overview
 
-新しい Mac での開発環境を素早く再現するための dotfiles リポジトリ。シンボリックリンクで設定ファイルを管理し、`install.sh` が唯一のエントリポイント。
+新しい Mac での開発環境を素早く再現するための dotfiles リポジトリ。シンボリックリンクで設定ファイルを管理し、`setup.sh` が唯一のエントリポイント。
 
 ## Setup
 
 ```bash
 # 新規 Mac セットアップ（全工程）
-# 先に見本をコピーする。無いと install.sh はエラーで止まる。
+# 先に見本をコピーする。無いと setup.sh はエラーで止まる。
 # 引数は private か work。zsh の選択は .zshrc.local の source。
 cp home/.zshrc.local.sample home/.zshrc.local
-./install.sh private
+./setup.sh private
 
 # シンボリックリンクのみ再作成（dotfiles メンテナンス時）
 ./link.sh           # デフォルトは dry-run（実行予定の操作を表示するだけ）
 ./link.sh --apply   # 実際に反映する
 ```
 
-`link.sh` はデフォルトで dry-run。削除・退避・リンク作成の予定を表示するだけで何も変更しない。実際に反映するには `--apply` を渡す（`install.sh` は `--apply` 付きで呼ぶ）。
+`link.sh` はデフォルトで dry-run。削除・退避・リンク作成の予定を表示するだけで何も変更しない。実際に反映するには `--apply` を渡す（`setup.sh` は `--apply` 付きで呼ぶ）。
 
 このスクリプトは以下を順番に実行する:
 
@@ -33,7 +33,7 @@ cp home/.zshrc.local.sample home/.zshrc.local
 
 ## Architecture
 
-`install.sh` が `link.sh` を呼び、リポジトリ内のファイルを `$HOME` にシンボリックリンクで配置する構成。設定の大多数は `home/`（`$HOME` のミラー）に置き、リポジトリ上の階層がそのまま配置先になる（`home/.config/nvim` → `~/.config/nvim`）。`link.sh` の `link_home` は home 相対パス 1 つから配置先を自動導出する。ミラーで表現できない 2 種類は例外として明示的に `link` する:
+`setup.sh` が `link.sh` を呼び、リポジトリ内のファイルを `$HOME` にシンボリックリンクで配置する構成。設定の大多数は `home/`（`$HOME` のミラー）に置き、リポジトリ上の階層がそのまま配置先になる（`home/.config/nvim` → `~/.config/nvim`）。`link.sh` の `link_home` は home 相対パス 1 つから配置先を自動導出する。ミラーで表現できない 2 種類は例外として明示的に `link` する:
 
 - **1 実体 → 複数箇所のファンアウト**: `shared/`（`AGENTS.md`・`skills/`）
 - **Library 配下の特殊パス**: `vscode/`・`ghostty/`
@@ -64,7 +64,7 @@ cp home/.zshrc.local.sample home/.zshrc.local
 ## Key Files
 
 - **`home/`** — `$HOME` のミラー。配下のファイルは同じ相対パスで `~` にリンクされる。
-- **`Brewfile`** — Homebrew の共通パッケージ。環境差分は `Brewfile.private` か `Brewfile.work`。どちらを入れるかは `./install.sh private` または `./install.sh work`。zsh の選択は `~/.zshrc.local` が `private.zsh` か `work.zsh` を source する。
+- **`Brewfile`** — Homebrew の共通パッケージ。環境差分は `Brewfile.private` か `Brewfile.work`。どちらを入れるかは `./setup.sh private` または `./setup.sh work`。zsh の選択は `~/.zshrc.local` が `private.zsh` か `work.zsh` を source する。
 - **`home/.config/mise/config.toml`** — ランタイムバージョン管理（Node 24 / Python 3.13 / Go 1 / AWS CLI 2.22.12）。
 - **`home/.config/nvim/`** — lazy.nvim を使った Neovim 設定。エントリポイントは `init.lua`、プラグインは `lua/plugins/init.lua`、オプションは `lua/options.lua`、キーマップは `lua/keymaps.lua`。
 - **`shared/`** — Claude Code / Codex 共有の AI エージェント資産。`AGENTS.md`（共通グローバル指示）と `skills/`（Agent Skills 標準の SKILL.md 群）。両ツールのグローバルパスに同じ実体をリンクする（1 実体 → 複数箇所なので `home/` ミラーではなく例外扱い）。Claude Code は `AGENTS.md` を読まないため、`CLAUDE.md`（`@~/.claude/AGENTS.md` を import するだけの薄いファイル）を経由させる。

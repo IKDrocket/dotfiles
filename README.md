@@ -4,17 +4,17 @@
 
 ## セットアップ
 
-見本をコピーしてから `install.sh` を実行します。どちらかが無いと `install.sh` はエラーで止まります。
+見本をコピーしてから `setup.sh` を実行します。どちらかが無いと `setup.sh` はエラーで止まります。
 
 ```bash
 git clone https://github.com/ikdrocket/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 cp home/.zshrc.local.sample home/.zshrc.local
 # .zshrc.local で読む zsh 断片を選んでから。引数は private か work。
-./install.sh private
+./setup.sh private
 ```
 
-`install.sh` を実行すると以下が自動で行われます:
+`setup.sh` を実行すると以下が自動で行われます:
 
 1. **Xcode CLI ツール** と **Rosetta**（Apple Silicon）のインストール
 2. **Homebrew** のインストール（未インストール時）と Brewfile の一括インストール。共通の `Brewfile` に加え、引数に応じて `Brewfile.private` か `Brewfile.work` を 1 つ入れる
@@ -63,7 +63,7 @@ cp home/.zshrc.local.sample home/.zshrc.local
 
 ```
 dotfiles/
-├── install.sh               # セットアップスクリプト（メインエントリポイント）
+├── setup.sh               # セットアップスクリプト（メインエントリポイント）
 ├── link.sh                  # シンボリックリンク作成スクリプト
 ├── Brewfile                 # Homebrew 共通パッケージ
 ├── Brewfile.private         # プライベート環境だけのパッケージ

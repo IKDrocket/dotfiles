@@ -18,7 +18,7 @@ require_file() {
   local sample="$2"
   if [[ ! -f "$path" ]]; then
     echo "error: $path がありません。" >&2
-    echo "  cp \"$sample\" \"$path\" を実行してから、install.sh を再実行してください。" >&2
+    echo "  cp \"$sample\" \"$path\" を実行してから、setup.sh を再実行してください。" >&2
     exit 1
   fi
 }
